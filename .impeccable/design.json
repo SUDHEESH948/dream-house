@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-24T00:00:00Z",
+  "title": "Design System: Dream House",
+  "extensions": {
+    "evidence": {
+      "mode": "Source inspection only",
+      "sources": ["PRODUCT.md", "src/app/globals.css", "src/components/*.tsx", "content/reference.json", "src-fonts.css"],
+      "visualVerification": "Unavailable: computer-use browser URL safety failure. No screenshot approval claimed.",
+      "qualitativeAuthority": "User-selected reference and Dream House branding; no new creative metaphor approved.",
+      "tonalRamps": "Preview ramps are synthesized and are not production palette scales."
+    },
+    "colorMeta": {
+      "ink": {"role":"primary","displayName":"Forest Ink","tonalRamp":["oklch(15% .01 145)","oklch(26% .02 145)","oklch(38% .03 145)","oklch(50% .04 145)","oklch(62% .04 145)","oklch(74% .03 145)","oklch(86% .02 145)","oklch(95% .006 145)"]},
+      "forest": {"role":"primary","displayName":"Forest","tonalRamp":["oklch(15% .01 150)","oklch(26% .02 150)","oklch(38% .03 150)","oklch(50% .04 150)","oklch(62% .04 150)","oklch(74% .03 150)","oklch(86% .02 150)","oklch(95% .006 150)"]},
+      "sage": {"role":"secondary","displayName":"Sage","tonalRamp":["oklch(15% .01 147)","oklch(26% .025 147)","oklch(38% .04 147)","oklch(50% .055 147)","oklch(62% .055 147)","oklch(74% .04 147)","oklch(86% .025 147)","oklch(95% .008 147)"]},
+      "sage-muted": {"role":"secondary","displayName":"Muted Sage","tonalRamp":["oklch(15% .007 135)","oklch(26% .017 135)","oklch(38% .028 135)","oklch(50% .035 135)","oklch(62% .035 135)","oklch(74% .028 135)","oklch(86% .017 135)","oklch(95% .005 135)"]},
+      "gold": {"role":"tertiary","displayName":"Hero Gold","tonalRamp":["oklch(15% .02 90)","oklch(26% .05 90)","oklch(38% .08 90)","oklch(50% .1 90)","oklch(62% .12 90)","oklch(74% .1 90)","oklch(86% .05 90)","oklch(95% .015 90)"]},
+      "paper": {"role":"neutral","displayName":"Ivory Paper","tonalRamp":["oklch(15% 0 0)","oklch(26% 0 0)","oklch(38% 0 0)","oklch(50% 0 0)","oklch(62% 0 0)","oklch(74% 0 0)","oklch(86% 0 0)","oklch(95% 0 0)"]},
+      "white": {"role":"neutral","displayName":"White","tonalRamp":["oklch(15% 0 0)","oklch(26% 0 0)","oklch(38% 0 0)","oklch(50% 0 0)","oklch(62% 0 0)","oklch(74% 0 0)","oklch(86% 0 0)","oklch(95% 0 0)"]},
+      "cream": {"role":"neutral","displayName":"Cream","tonalRamp":["oklch(15% .002 105)","oklch(26% .005 105)","oklch(38% .008 105)","oklch(50% .012 105)","oklch(62% .012 105)","oklch(74% .008 105)","oklch(86% .005 105)","oklch(95% .002 105)"]},
+      "secondary-ink": {"role":"neutral","displayName":"Secondary Ink","tonalRamp":["oklch(15% .007 145)","oklch(26% .017 145)","oklch(38% .028 145)","oklch(50% .035 145)","oklch(62% .035 145)","oklch(74% .028 145)","oklch(86% .017 145)","oklch(95% .005 145)"]},
+      "button-hover": {"role":"primary","displayName":"Action Hover","tonalRamp":["oklch(15% .014 147)","oklch(26% .035 147)","oklch(38% .056 147)","oklch(50% .07 147)","oklch(62% .07 147)","oklch(74% .056 147)","oklch(86% .035 147)","oklch(95% .01 147)"]}
+    },
+    "typographyMeta": {"display":{"purpose":"Playfair hero phrases, including italic emphasis."},"headline":{"purpose":"Cormorant overlay navigation scale; preserve existing editorial heading scales."},"body":{"purpose":"Observed form values; not a universal paragraph size."}},
+    "shadows": [],
+    "motion": [
+      {"name":"hero-interval","value":"6000ms","purpose":"Advance unless paused, hidden or reduced motion."},
+      {"name":"hero-crossfade","value":"2000ms cubic-bezier(.645,.045,.355,1)","purpose":"Photographic opacity crossfade."},
+      {"name":"hero-heading","value":"1600ms power3.out; delay 300ms","purpose":"Entrance from opacity zero, blur 8px, scale .96 and y 10px."},
+      {"name":"reveal","value":"1100ms power3.out","purpose":"Once-only entry at top 94%."},
+      {"name":"lenis","value":"duration 1.2","purpose":"Smooth-wheel scroll coordination."},
+      {"name":"gallery-scrub","value":"0.8","purpose":"Horizontal track catch-up over 400vh section."},
+      {"name":"image-reveal","value":"scrub 1; top 90% to top 20%","purpose":"Clip inset 15% 5% toward zero; radius 60px toward 20px."},
+      {"name":"parallax","value":"-4% to 4%","purpose":"Gentle vertical photo travel."}
+    ],
+    "breakpoints": [{"name":"tailwind-sm","value":"640px"},{"name":"tailwind-md","value":"768px"},{"name":"tailwind-lg","value":"1024px"},{"name":"navigation-desktop","value":"1201px"}]
+  },
+  "components": [
+    {"name":"Inquiry action","kind":"button","refersTo":"button-primary","description":"Pill action for preparing or copying an inquiry.","html":"<button class=\"ds-action\">Prepare inquiry <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></button>","css":".ds-action{display:flex;align-items:center;gap:35px;padding:18px 25px;border:0;border-radius:100px;background:var(--ink,#0f2517);color:white;font:400 10px Montserrat,sans-serif;text-transform:uppercase;letter-spacing:.15em;cursor:pointer;transition:background .3s}.ds-action svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.5;fill:none}.ds-action:hover{background:#42694a}.ds-action:focus-visible{outline:2px solid var(--sage,#7a9c7e);outline-offset:5px}"},
+    {"name":"Text field","kind":"input","refersTo":"field","description":"Transparent square field with a fine underline.","html":"<label class=\"ds-field\">Your name<input placeholder=\"Full name\" autocomplete=\"name\"/></label>","css":".ds-field{display:flex;flex-direction:column;gap:12px;color:var(--ink,#0f2517);font:400 10px/1.8 Montserrat,sans-serif;letter-spacing:.12em;text-transform:uppercase}.ds-field input{width:100%;border:0;border-bottom:1px solid #0f251733;background:transparent;padding:14px 0;border-radius:0;font:300 14px/1.8 Montserrat,sans-serif;color:var(--ink,#0f2517);caret-color:var(--sage,#7a9c7e)}.ds-field input::placeholder{color:#526658;opacity:1}.ds-field input:focus-visible{outline:2px solid var(--sage,#7a9c7e);outline-offset:5px}"},
+    {"name":"Menu trigger","kind":"button","refersTo":"menu-toggle","description":"Circular trigger with unequal sage strokes.","html":"<button class=\"ds-menu\" aria-label=\"Open navigation\"><span></span><span></span></button>","css":".ds-menu{display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:6px;width:48px;height:48px;border-radius:50%;background:#1a2f22;border:1px solid #7a9c7e4d;padding:0 12px;cursor:pointer;transition:border-color .3s}.ds-menu span{width:24px;height:2px;background:var(--sage,#7a9c7e);transition:width .4s,background .3s}.ds-menu span:last-child{width:17px}.ds-menu:hover{border-color:var(--sage,#7a9c7e)}.ds-menu:hover span{width:24px;background:white}.ds-menu:focus-visible{outline:2px solid var(--sage,#7a9c7e);outline-offset:5px}"},
+    {"name":"Project filters","kind":"custom","description":"Text controls with a selected sage underline.","html":"<div class=\"ds-filters\"><button aria-pressed=\"true\">All</button><button aria-pressed=\"false\">Residential</button></div>","css":".ds-filters{display:flex;gap:40px;padding-bottom:20px;border-bottom:1px solid #1a2f241a}.ds-filters button{position:relative;padding:0 0 8px;border:0;background:transparent;font:700 10px Montserrat,sans-serif;text-transform:uppercase;letter-spacing:.2em;color:#526658;cursor:pointer;transition:color .3s}.ds-filters button[aria-pressed=true]{color:var(--ink,#0f2517)}.ds-filters button[aria-pressed=true]::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--sage,#7a9c7e)}.ds-filters button:focus-visible{outline:2px solid var(--sage,#7a9c7e);outline-offset:5px}"},
+    {"name":"Wordmark navigation","kind":"nav","description":"Stacked Cormorant wordmark with a tracked Montserrat descriptor.","html":"<nav><a class=\"ds-wordmark\" href=\"#\">DREAM HOUSE<small>ARCHITECTURE &amp; INTERIORS</small></a></nav>","css":".ds-wordmark{display:flex;flex-direction:column;gap:4px;width:fit-content;color:var(--ink,#0f2517);font:500 24px/1 'Cormorant Garamond',serif;letter-spacing:-.035em;text-decoration:none;transition:color .5s,opacity .3s}.ds-wordmark small{font:500 5.4px Montserrat,sans-serif;letter-spacing:.22em}.ds-wordmark:hover{opacity:.75}.ds-wordmark:focus-visible{outline:2px solid var(--sage,#7a9c7e);outline-offset:5px}"}
+  ],
+  "narrative": {
+    "overview": "The selected Y Architects reference is the visual authority. Dream House changes the brand name while retaining the reference's quiet architectural photography, measured composition, image crops and editorial rhythm. Forest greens and ivory frame warm materials; expressive serif typography sits beside restrained sans-serif labels.\n\nThis document records the implemented source, not screenshot approval. Evidence is `src/app/globals.css`, `src/components/*.tsx`, `src-fonts.css` and the preserved Tailwind markup in `content/reference.json`. Browser visual verification was unavailable because the computer-use browser rejected the URL safety check. No generated composition was used, and no independent creative metaphor has been approved.",
+    "keyCharacteristics": ["Large photographic surfaces and generous negative space.","Forest ink, ivory paper and muted botanical accents.","Playfair hero, Cormorant display text and Montserrat supporting text.","Slow cinematic transitions with a usable reduced-motion presentation."],
+    "rules": [{"name":"The Reference Palette Rule","body":"Preserve the source's forest, sage and ivory relationships when extending an existing surface.","section":"colors"},{"name":"The Three Voices Rule","body":"Use Playfair for the cinematic hero, Cormorant for editorial display and Montserrat for supporting information.","section":"typography"}],
+    "dos": ["Do preserve the selected reference's section geometry, photo crops and typography roles.","Do use dedicated mobile hero images and responsive composition.","Do retain visible focus, slideshow pause and reduced-motion behavior.","Do treat source inspection as evidence and record browser verification separately."],
+    "donts": ["Don't replace the binding reference with a generated composition or a new visual identity.","Don't flatten the two established forest and sage token pairs into one color each.","Don't introduce generic elevated cards into the existing photographic layouts.","Don't describe this source extraction as visually verified in a browser."]
+  }
+}
