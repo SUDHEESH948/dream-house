@@ -16,7 +16,7 @@ export function ContactForm() {
       <label>Email address<input name="email" type="email" autoComplete="email" required maxLength={200} placeholder="you@example.com" /></label></div>
     <div className="form-grid"><label>Project type<select name="type" required defaultValue=""><option value="" disabled>Select a service</option><option>Civil Engineering Consulting</option><option>Interior & Exterior Designing</option><option>Structural Designing</option><option>AutoCAD & 3D Studio</option></select></label>
       <label>Project location<input name="location" required maxLength={200} placeholder="City / region" /></label></div>
-    <label>Tell us about your vision<textarea name="message" required minLength={20} maxLength={5000} rows={5} placeholder="The space you imagine, its context, and your ideal timeline…" /></label>
+    <label>What would you like help with?<textarea name="message" required minLength={20} maxLength={5000} rows={5} placeholder="The space you imagine, its context, and your ideal timeline…" /></label>
     <p className="form-note" id="privacy">Your inquiry is prepared in your browser. Nothing is sent until you choose to send it from your email app.</p>
     <button className="form-submit" type="submit">Prepare inquiry <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></button>
     <p role="status" className="form-note">{status}</p>

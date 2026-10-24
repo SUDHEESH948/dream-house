@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
 import logo from '../../public/brand/dreamhouse-logo.png';
 
-const links = [['Home', '/'], ['About', '/about/'], ['Gallery', '/gallery/'], ['Services', '/services/'], ['Contact', '/contact/']];
+const links = [['Home', '/'], ['About', '/about/'], ['Design ideas', '/gallery/'], ['Services', '/services/'], ['Contact', '/contact/']];
 export function Navigation() {
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(false);
@@ -54,7 +54,7 @@ export function Navigation() {
       <div className="menu-photo"><Image src="/images/residence-garden.webp" alt="Contemporary garden residence with warm timber and glass" fill sizes="50vw" /></div>
       <nav aria-label="Main"><ol>{links.map(([label, href], i) => <li key={href}>
         <Link className={`menu-link ${path === href || path === href.slice(0, -1) ? 'current' : ''}`} href={href} onClick={close}><span>0{i + 1}</span>{label}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></Link>
-      </li>)}</ol><p>Architecture in dialogue with nature.</p></nav>
+      </li>)}</ol><p>DreamHouse Architectural Engineering<br/>Sulthan Bathery, Wayanad</p></nav>
     </div>}
   </>;
 }

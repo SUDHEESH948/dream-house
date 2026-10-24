@@ -1,13 +1,15 @@
-import reference from '../../content/reference.json';
 import { Hero } from '@/components/Hero';
-import { ReferenceMarkup } from '@/components/ReferenceMarkup';
 import { PortfolioBook } from '@/components/PortfolioBook';
+import { HomeIntroduction, HomeBrief, HomeStudio, ServiceOverview, Conversation } from '@/components/StudioSections';
 
 export default function Home() {
   return <>
     <Hero />
-    <ReferenceMarkup html={reference.home[1]} />
+    <HomeIntroduction />
     <PortfolioBook />
-    {reference.home.slice(3).map((section, i) => <ReferenceMarkup key={i} html={section} />)}
+    <HomeBrief />
+    <HomeStudio />
+    <ServiceOverview />
+    <Conversation />
   </>;
 }

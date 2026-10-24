@@ -5,9 +5,9 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 
 const slides = [
-  { image: 'residence-garden', first: 'Sculpting', second: 'Light.', alt: 'Contemporary garden residence with warm timber and glass' },
-  { image: 'interior-earth-tones', first: 'Quiet', second: 'Luxury.', alt: 'Warm living room with earth tones and sculptural furniture' },
-  { image: 'residence-timber', first: 'Living', second: 'Art.', alt: 'Modern facade with dark panels and warm timber detailing' },
+  { image: 'residence-garden', first: 'Begin with', second: 'your idea.', alt: 'Contemporary garden residence with warm timber and glass' },
+  { image: 'interior-earth-tones', first: 'Make room', second: 'for living.', alt: 'Warm living room with earth tones and sculptural furniture' },
+  { image: 'residence-timber', first: 'Plan the', second: 'possibilities.', alt: 'Modern facade with dark panels and warm timber detailing' },
 ];
 
 export function Hero() {

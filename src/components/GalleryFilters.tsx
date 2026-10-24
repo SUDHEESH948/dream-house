@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-const categories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Cultural'];
+const categories = ['All', 'Interiors', 'Exteriors', 'Workspaces'];
 export function GalleryFilters() {
   const [active, setActive] = useState('All');
   const [count, setCount] = useState(6);
@@ -14,7 +14,7 @@ export function GalleryFilters() {
     setCount(visible);
     window.dispatchEvent(new Event('resize'));
   }
-  return <><div className="gallery-filters" aria-label="Filter projects">
+  return <><div className="gallery-filters" aria-label="Filter design ideas">
     {categories.map(category => <button key={category} type="button" aria-pressed={active === category} onClick={() => filter(category)}>{category}</button>)}
-  </div><p className="sr-only" role="status">{count} projects shown</p></>;
+  </div><p className="sr-only" role="status">{count} design references shown</p></>;
 }

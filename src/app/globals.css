@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "../../src-fonts.css";
-@source "../../content/reference.json";
 
 @theme {
   --color-forest: #10233f;

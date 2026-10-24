@@ -8,8 +8,9 @@
       "sources": [
         "PRODUCT.md",
         "src/app/globals.css",
+        "src/app/studio.css",
         "src/components/*.tsx",
-        "content/reference.json",
+        "content/site.ts",
         "src-fonts.css"
       ],
       "visualVerification": "Unavailable: computer-use browser URL safety failure. No screenshot approval claimed.",
@@ -21,7 +22,8 @@
         "descriptionMap": "content/image-descriptions.json",
         "mobileCrops": "900 × 1200",
         "referencePhotosRetained": 0
-      }
+      },
+      "contentAuthority": "Original DreamHouse copy and confirmed user-supplied business facts. No reference prose or copied project cases; native React content replaces the legacy HTML pipeline."
     },
     "colorMeta": {
       "ink": {

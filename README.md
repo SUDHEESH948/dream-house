@@ -1,28 +1,13 @@
-# Dream House
+# DreamHouse
 
-Next.js App Router recreation of the supplied Y Architects reference, with Dream House branding.
+Next.js App Router website for DreamHouse Architectural Engineering, Sulthan Bathery, Wayanad, Kerala.
 
-## Run
+Run with Node 22+: `npm install`, then `npm run dev`. `npm run build` produces a static export in `out/`. GSAP, ScrollTrigger and Lenis coordinate motion; reduced-motion preferences are supported. Images use Next.js Image with local WebP assets and locally hosted fonts.
 
-Use Node.js 22 or later.
+All visitor-facing copy is original DreamHouse content. `content/site.ts` defines the four confirmed services and six original design-idea articles. Native React components render each page. The legacy reference HTML, copied project stories and their rendering pipeline have been removed.
 
-```sh
-npm install
-npm run dev
-```
+The user supplied the blue-and-amber logo and business details: mobile 9446731418, office 04936 221770, email dreamhousesby@gmail.com. No team biographies, registrations, years of experience or completed-project claims are invented. Photography is independent Unsplash inspiration, with sources in `public/images/provenance.json`. Gallery articles and the folding homepage album clearly disclose that these are not completed DreamHouse commissions.
 
-`npm run build` generates a deployable static site in `out/`. Images are preoptimized WebP files served through Next.js Image. All fonts are local. No third-party font requests are required at runtime.
+The manually operated photo book supports click, swipe, keyboard navigation, previous/next/replay and instant changes with reduced motion. The enquiry form validates and prepares a copyable draft for the visitor to send through their email app. The map shows the locality; call to confirm directions before visiting.
 
-## Content and implementation
-
-The reference's measured section markup is preserved in `content/reference.json` and rendered into React by `ReferenceMarkup`, which applies branding, Next.js Image, Next.js links, and functional inquiry handling. The source does not execute any reference JavaScript. Reusable navigation, slideshow, inquiry form, and scroll orchestration live in `src/components`.
-
-The hero retains its 6-second interval, 2-second crossfade and separate mobile crops. The homepage gallery now uses a folding photo lookbook inspired by the user-selected https://redlineinteriors.in/: click, swipe, or use arrow keys to turn two-sided pages, with previous/next/replay controls. GSAP animates page turns and recentering; CSS provides 3D perspective and hidden backfaces. Reduced-motion mode changes pages instantly. GSAP/ScrollTrigger and Lenis continue to handle the remaining image reveals and parallax.
-
-All photographs are independently sourced from Unsplash under the Unsplash License. No Y Architects photo is retained in the shipping assets. Sources and dimensions are recorded in `public/images/provenance.json`; descriptive alternatives are in `content/image-descriptions.json`. The hero includes locally optimized portrait crops. The former studio portrait area now uses a collaborative studio photograph.
-
-The user supplied DreamHouse's logo and business details. The website uses the blue-and-amber logo, deep navy typography and warm white surfaces. The studio is in Sulthan Bathery, Wayanad, Kerala. Mobile: 9446731418; office: 04936 221770; email: dreamhousesby@gmail.com. `content/business.json` records these supplied facts and services. Logo preparation provenance is in `public/brand/logo-preparation.json`.
-
-Reference staff identities, professional registrations and unverified experience figures have been removed. Stock portfolio photographs illustrate design inspiration and do not establish DreamHouse project authorship. Actual team biographies and completed-project evidence remain to be supplied. The inquiry form validates and prepares a copyable draft, then offers a mailto link to the real business email for the visitor to review and send. No inquiry is falsely reported as sent automatically.
-
-Privacy and terms pages in the original reference return 404. Their footer links instead lead to the preview's form privacy and engagement notes.
+Checks: `node scripts/verify-export.mjs`, `node scripts/verify-business.mjs`, `node scripts/verify-original-content.mjs`. Browser screenshot comparison remains unverified because the available browser tool could not open the site.

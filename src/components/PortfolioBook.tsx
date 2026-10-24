@@ -128,8 +128,8 @@ export function PortfolioBook() {
 
   return <section className="lookbook-section" id="lookbook" aria-labelledby="lookbook-title">
     <div className="lookbook-heading">
-      <h2 id="lookbook-title">Design <em>Gallery.</em></h2>
-      <p>Architecture and interiors, one page at a time.</p>
+      <h2 id="lookbook-title">The ideas <em>album.</em></h2>
+      <p>Browse spaces, finishes and details to shape your brief.</p>
     </div>
     <div className={`book-stage ${turning ? 'is-turning' : ''}`} role="button" tabIndex={0}
       aria-label={page === 0 ? 'Open the DreamHouse lookbook' : page === total ? 'Replay the DreamHouse lookbook' : 'Turn a lookbook page. Click left to go back or right to go forward.'}
@@ -166,7 +166,7 @@ export function PortfolioBook() {
       </button>
     </div>
     <p id="book-instructions" className="book-instructions">Click a page or swipe to turn. Use the arrow keys when the book is focused.</p>
-    <Link className="book-portfolio-link" href="/gallery/">Explore the full gallery <Arrow /></Link>
-    <p className="book-disclosure">Design inspiration · Independent stock photography</p>
+    <Link className="book-portfolio-link" href="/gallery/">View the design ideas <Arrow /></Link>
+    <p className="book-disclosure">Photographic references for your brief. These are not completed DreamHouse commissions.</p>
   </section>;
 }

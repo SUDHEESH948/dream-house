@@ -1,6 +1,6 @@
 ---
 name: Dream House
-description: Architecture and interiors in dialogue with nature, faithfully recreating the selected reference.
+description: Original DreamHouse architecture, engineering and design website.
 colors:
   ink: "#10233f"
   forest: "#10233f"
@@ -188,3 +188,6 @@ Twelve independently sourced photos form six leaves: a front cover, five interio
 Use native controls for open, previous, next and replay. The primary control keeps its DOM identity and keyboard focus across states. Left/right arrows and Home work on the focused book; horizontal swipes over 40px turn pages while vertical panning and pinch zoom remain available. A turn lock prevents overlapping animations. Reduced motion commits the same states instantly. There is no autoplay. Avoid filters, opacity grouping or overflow clipping on the preserve-3d wrapper: these flatten the scene. Photo faces may clip their own imagery.
 
 Book-only spine gradients and offset shadow convey page material; they are not a new decorative system. Typography, blue-and-amber accents and business details remain DreamHouse's. The portfolio remains labeled as stock design inspiration. Source review and build validation passed; browser-based motion and responsive visual verification remain unavailable.
+
+## Content authority ? latest revision
+The user requires completely different content from Y Architects. This supersedes earlier instructions to preserve reference prose or markup. content/reference.json and ReferenceMarkup are deleted. content/site.ts and native StudioSections, InteriorPages and Footer components own original copy. studio.css provides responsive editorial layouts for these native sections. Only confirmed DreamHouse business facts may be stated as facts. Gallery photographs illustrate ideas and must not be presented as completed commissions. Preserve the supplied logo, palette, independent photography, hero interaction and folding album.

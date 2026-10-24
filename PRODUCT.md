@@ -8,7 +8,7 @@ web
 Next.js App Router, React, TypeScript, Tailwind CSS, GSAP/ScrollTrigger, Lenis and Next.js Image, as specified by the user.
 
 ## Product Purpose
-A website for DreamHouse Architectural Engineering in Sulthan Bathery. Retain the reference website's measured layouts and motion with DreamHouse's real brand and contact details.
+A website for DreamHouse Architectural Engineering in Sulthan Bathery. Use original DreamHouse copy, confirmed business details, independent photographs and the existing editorial design language.
 
 ## Brand Commitments
 Use the user's second logo: amber roof/DH mark and blue DreamHouse lettering. The authorized website palette uses royal blue, amber, deep navy and warm white. All photographs are independently sourced; do not use Y Architects photos.
@@ -24,3 +24,6 @@ The user subsequently requested the book-folding interaction from https://redlin
 
 ## Evidence and Open Decisions
 No actual team biographies, professional registrations, years of experience or completed-project evidence were supplied. Remove reference identities and unverified credentials. Portfolio photographs are independent stock inspiration, disclosed on gallery pages. Exact street address remains unspecified; map shows Sulthan Bathery locality only. Browser screenshot verification has been unavailable.
+
+## Original content revision
+All reference prose and project cases are removed. Native React pages and content/site.ts now provide original home, about, service, contact and design-idea content. Six inspiration articles replace copied project cases; no project authorship is implied.

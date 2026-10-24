@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import './lookbook.css';
+import './studio.css';
 import { Navigation } from '@/components/Navigation';
 import { Motion } from '@/components/Motion';
-import { ReferenceMarkup } from '@/components/ReferenceMarkup';
-import reference from '../../content/reference.json';
+import { Footer } from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: { default: 'DreamHouse | Architectural Engineering, Sulthan Bathery', template: '%s | DreamHouse' },
@@ -17,7 +17,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <a className="skip-link" href="#main">Skip to content</a>
     <Navigation />
     <main id="main">{children}</main>
-    <ReferenceMarkup html={reference.footer} />
+    <Footer />
     <Motion />
   </body></html>;
 }
