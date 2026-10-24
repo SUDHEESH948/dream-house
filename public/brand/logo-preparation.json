@@ -1,0 +1,11 @@
+{
+  "origin": "User-supplied second logo image",
+  "process": "Built-in image generation tool, background extraction edit; then project-local trim and resize",
+  "prompt": "Background extraction and careful resolution cleanup of the user's second orange-and-blue DreamHouse logo. Preserve roof, chimney, window, DH monogram, DreamHouse lettering and Architectural engineering subtitle; remove white surrounding background to actual transparency; trim empty margins; retain orange and blue; no redesign, extra elements, slogans or shadows.",
+  "colors": {
+    "blue": "#1558b0",
+    "amber": "#df8d13",
+    "navy": "#10233f",
+    "warmWhite": "#faf9f6"
+  }
+}

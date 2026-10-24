@@ -2,16 +2,16 @@
 name: Dream House
 description: Architecture and interiors in dialogue with nature, faithfully recreating the selected reference.
 colors:
-  ink: "#0f2517"
-  forest: "#1a2f24"
-  sage: "#7a9c7e"
-  sage-muted: "#8a9a86"
-  paper: "#fafafa"
-  cream: "#f5f5f0"
-  gold: "#d4af37"
+  ink: "#10233f"
+  forest: "#10233f"
+  sage: "#1558b0"
+  sage-muted: "#2965ac"
+  paper: "#faf9f6"
+  cream: "#f4f0e8"
+  gold: "#df8d13"
   white: "#ffffff"
-  secondary-ink: "#526658"
-  button-hover: "#42694a"
+  secondary-ink: "#4c6078"
+  button-hover: "#10478f"
 typography:
   display:
     fontFamily: "Playfair Display, serif"
@@ -83,13 +83,13 @@ components:
 
 ## Overview
 
-The selected Y Architects reference is the authority for layout, typography and motion. Dream House uses independently sourced Unsplash architecture and interior photographs, as requested by the user, while retaining the measured composition and editorial rhythm. No Y Architects photograph is retained. Forest greens and ivory frame warm materials; expressive serif typography sits beside restrained sans-serif labels.
+The selected Y Architects reference is the authority for layout, typography and motion. Dream House uses independently sourced Unsplash architecture and interior photographs, as requested by the user, while retaining the measured composition and editorial rhythm. No Y Architects photograph is retained. Deep navy, warm white, royal blue and amber frame warm materials; expressive serif typography sits beside restrained sans-serif labels.
 
 This document records the implemented source, not screenshot approval. Evidence is `src/app/globals.css`, `src/components/*.tsx`, `src-fonts.css` and the preserved Tailwind markup in `content/reference.json`. Browser visual verification was unavailable because the computer-use browser rejected the URL safety check. No generated composition was used, and no independent creative metaphor has been approved.
 
 **Key Characteristics:**
 - Large photographic surfaces and generous negative space.
-- Forest ink, ivory paper and muted botanical accents.
+- Navy ink, warm white and logo-derived royal blue and amber accents.
 - Playfair hero, Cormorant display text and Montserrat supporting text.
 - Slow cinematic transitions with a usable reduced-motion presentation.
 
@@ -97,7 +97,7 @@ This document records the implemented source, not screenshot approval. Evidence 
 
 ### Primary
 
-Forest ink is the main text, footer, menu-overlay and primary-action color. Forest is the complementary Tailwind theme green. Use the named source tokens in the frontmatter; preserve existing alpha variations in the reference markup.
+Navy ink is the main text, footer and menu-overlay color. Legacy `forest` and `sage` token names now resolve to navy and blue for compatibility with existing markup. Use the named source tokens in the frontmatter; preserve existing alpha variations in the reference markup.
 
 ### Secondary
 
@@ -111,7 +111,7 @@ Gold emphasizes the italic second phrase of the hero. Retain its established rol
 
 Paper is the page canvas. Cream supports the inquiry draft and existing neutral surfaces. White supplies image-overlay type. Secondary ink handles field placeholders and supporting copy.
 
-**The Reference Palette Rule.** Preserve the source's forest, sage and ivory relationships when extending an existing surface.
+**The Logo Palette Rule.** Use royal blue and amber from the supplied logo, with navy text and warm white surfaces.
 
 ## Typography
 
@@ -171,3 +171,10 @@ Use the independently sourced Unsplash imagery recorded in `public/images/proven
 - **Don't** flatten the two established forest and sage token pairs into one color each.
 - **Don't** introduce generic elevated cards into the existing photographic layouts.
 - **Don't** describe this source extraction as visually verified in a browser.
+
+
+## Confirmed DreamHouse identity
+
+The user supplied the DreamHouse Architectural Engineering logo and business details. Header and footer use `public/brand/dreamhouse-logo.png`, prepared from the second supplied image with background extraction. Use royal blue `#1558b0`, amber `#df8d13`, navy `#10233f`, warm white `#faf9f6`, and warm neutral `#f4f0e8`. The logo sits on white for reliable legibility; navigation lines and hero emphasis use amber, and small accent text on light surfaces uses blue.
+
+Business location: Sulthan Bathery, Wayanad, Kerala. Mobile: 9446731418. Office: 04936 221770. Email: dreamhousesby@gmail.com. Services: civil engineering consulting, interior and exterior designing, structural designing, AutoCAD and 3D computer studio aided designing. Preserve these supplied facts. Reference staff names, professional registration numbers and unverified experience figures are removed. Stock portfolio imagery is disclosed as inspiration.

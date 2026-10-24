@@ -6,8 +6,9 @@ import { ReferenceMarkup } from '@/components/ReferenceMarkup';
 import reference from '../../content/reference.json';
 
 export const metadata: Metadata = {
-  title: { default: 'Dream House | Architecture & Interiors', template: '%s | Dream House' },
-  description: 'Architecture in dialogue with nature. Discover considered spaces, expressive interiors and climate-responsive design at Dream House.',
+  title: { default: 'DreamHouse | Architectural Engineering, Sulthan Bathery', template: '%s | DreamHouse' },
+  description: 'DreamHouse Architectural Engineering, Sulthan Bathery. Civil engineering consulting, interior and exterior designing, structural designing, AutoCAD and 3D studio services. Call 9446731418.',
+  icons: { icon: '/brand/dreamhouse-logo.png' },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

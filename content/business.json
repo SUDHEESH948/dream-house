@@ -1,0 +1,21 @@
+{
+  "name": "DreamHouse",
+  "descriptor": "Architectural Engineering",
+  "location": "Sulthan Bathery, Wayanad, Kerala",
+  "mobile": "9446731418",
+  "office": "04936 221770",
+  "email": "dreamhousesby@gmail.com",
+  "services": [
+    "Civil Engineering Consulting",
+    "Interior & Exterior Designing",
+    "Structural Designing",
+    "AutoCAD & 3D Computer Studio Aided Designing"
+  ],
+  "colors": {
+    "blue": "#1558b0",
+    "amber": "#df8d13",
+    "navy": "#10233f",
+    "warmWhite": "#faf9f6"
+  },
+  "source": "User-supplied business details and orange/blue logo"
+}

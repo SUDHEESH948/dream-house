@@ -5,6 +5,7 @@ import { createElement } from 'react';
 import { ContactForm } from './ContactForm';
 import { GalleryFilters } from './GalleryFilters';
 import imageDescriptions from '../../content/image-descriptions.json';
+import logo from '../../public/brand/dreamhouse-logo.png';
 
 const textOf = (node: DOMNode): string => 'data' in node ? node.data : node instanceof Element ? node.children.map(child => textOf(child as DOMNode)).join(' ') : '';
 const projectGrid = (node: Element) => node.attribs.class?.includes('sm:grid-cols-2') && node.attribs.class?.includes('lg:grid-cols-3');
@@ -12,20 +13,14 @@ const projectGrid = (node: Element) => node.attribs.class?.includes('sm:grid-col
 // The reference's measured Tailwind layout is preserved as static content.
 // Rendering it as React keeps navigation, image sizing and form behavior native.
 export function ReferenceMarkup({ html }: { html: string }) {
-  const branded = html.replaceAll('Y Architects', 'Dream House').replaceAll('Y ARCHITECTS', 'DREAM HOUSE')
-    .replaceAll('hello@yarchitects.com', 'Contact the studio')
-    .replaceAll('href="mailto:Contact the studio"', 'href="/contact/"')
-    .replaceAll('+91 98765 43210', 'By appointment')
-    .replaceAll('+91 99959 87125', 'Contact details to be confirmed')
-    .replaceAll('Dream House, Chenakkal<br/>Kottakkal, Malappuram<br/>Kerala – 676503, India', 'Dream House<br/>Studio visits by appointment')
-    .replace(/Dream House, Chenakkal<br\s*\/?>Kottakkal, Malappuram<br\s*\/?>Kerala (?:–|&#x2013;|&ndash;) 676503, India/g, 'Dream House<br/>Studio visits by appointment')
-    .replaceAll('/privacy', '/contact/#privacy').replaceAll('/terms', '/contact/#terms');
+  const branded = html.replaceAll('/privacy', '/contact/#privacy').replaceAll('/terms', '/contact/#terms');
   const options: HTMLReactParserOptions = {
     replace(node) {
       if (!(node instanceof Element)) return;
       if (['script', 'style', 'canvas', 'feTurbulence'].includes(node.name)) return <></>;
-      if (node.name === 'iframe') return <div className="studio-location-note"><p>Dream House</p><span>Studio location to be confirmed.<br/>Visits by appointment.</span></div>;
+      if (node.name === 'iframe') return <iframe src="https://www.google.com/maps?q=Sulthan+Bathery,+Wayanad,+Kerala&output=embed" title="Sulthan Bathery, Wayanad, Kerala" width="100%" height="100%" className="absolute inset-0 w-full h-full" style={{ border: 0 }} loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />;
       const attrs = { ...node.attribs };
+      if (node.name === 'footer') return <footer {...attributesToProps(attrs)}><div className="max-w-7xl mx-auto"><Link href="/" className="footer-logo" aria-label="DreamHouse home"><Image src={logo} alt="DreamHouse Architectural Engineering" sizes="220px" /></Link></div>{domToReact(node.children as DOMNode[], options)}</footer>;
       if (node.name === 'div' && node.children.filter(child => child instanceof Element && child.name === 'button').length === 5) return <GalleryFilters />;
       if (node.name === 'div' && projectGrid(node)) attrs['data-project-grid'] = '';
       if (node.parent instanceof Element && projectGrid(node.parent)) attrs['data-category'] = textOf(node).match(/Residential|Hospitality|Commercial|Cultural/)?.[0] || '';
@@ -52,9 +47,7 @@ export function ReferenceMarkup({ html }: { html: string }) {
         attrs.style = (attrs.style || '').replace(/clip-path:[^;]+;?/g, '').replace(/border-radius:[^;]+;?/g, '');
       }
       if (node.name === 'a' && attrs.href?.includes('google.com/maps')) {
-        attrs.href = '/contact/#privacy';
-        delete attrs.target;
-        return <Link {...attributesToProps(attrs)} href={attrs.href}>Studio visits by appointment</Link>;
+        return <a {...attributesToProps(attrs)} href="https://www.google.com/maps/search/?api=1&query=Sulthan+Bathery+Wayanad+Kerala" target="_blank" rel="noopener noreferrer">Find Sulthan Bathery on Google Maps</a>;
       }
       if (node.name === 'section' && attrs.class?.includes('h-[400vh]')) {
         attrs['data-gallery'] = '';
@@ -68,7 +61,7 @@ export function ReferenceMarkup({ html }: { html: string }) {
       if (node.name === 'a' && attrs.href?.startsWith('/') && !attrs.href.startsWith('//')) {
         return <Link {...attributesToProps(attrs)} href={attrs.href}>{domToReact(node.children as DOMNode[], options)}</Link>;
       }
-      if (node.name === 'h1' && textOf(node).trim() === 'DREAM HOUSE') return createElement('p', attributesToProps(attrs), domToReact(node.children as DOMNode[], options));
+      if (node.name === 'h1' && textOf(node).trim() === 'DREAMHOUSE') return createElement('p', attributesToProps(attrs), domToReact(node.children as DOMNode[], options));
       if (reveal || attrs['data-gallery'] !== undefined || attrs['data-image-reveal'] !== undefined || attrs['data-parallax'] !== undefined || attrs['data-project-grid'] !== undefined || attrs['data-category'] !== undefined) {
         return createElement(node.name, attributesToProps(attrs), domToReact(node.children as DOMNode[], options));
       }

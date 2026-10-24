@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
+import logo from '../../public/brand/dreamhouse-logo.png';
 
 const links = [['Home', '/'], ['About', '/about/'], ['Gallery', '/gallery/'], ['Services', '/services/'], ['Contact', '/contact/']];
 export function Navigation() {
@@ -42,8 +43,8 @@ export function Navigation() {
   function close() { setOpen(false); trigger.current?.focus(); }
   return <>
     <header className={`site-navigation ${dark && !open ? 'dark-ink' : ''}`}>
-      <Link href="/" className="wordmark" aria-label="Dream House home" onClick={close}>
-        <span>DREAM HOUSE</span><small>ARCHITECTURE & INTERIORS</small>
+      <Link href="/" className="wordmark brand-logo" aria-label="DreamHouse Architectural Engineering home" onClick={close}>
+        <Image src={logo} alt="DreamHouse Architectural Engineering" priority sizes="(max-width: 767px) 150px, 188px" />
       </Link>
       <button ref={trigger} type="button" className={`menu-toggle ${open ? 'is-open' : ''}`} aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} aria-controls="site-menu" onClick={() => setOpen(value => !value)}>
         <span /><span />
