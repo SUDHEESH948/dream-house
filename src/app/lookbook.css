@@ -1,0 +1,62 @@
+.lookbook-section { background: #f4f0e8; padding: clamp(80px, 8vw, 140px) 20px 80px; position: relative; overflow: hidden; text-align: center; }
+.lookbook-heading { margin: 0 auto 48px; }
+.lookbook-heading h2 { font: 300 clamp(48px, 6vw, 90px)/1.05 'Cormorant Garamond', serif; letter-spacing: -.025em; color: #10233f; }
+.lookbook-heading h2 em { display: block; font-weight: 300; color: #1558b0; }
+.lookbook-heading > p { margin: 24px auto 0; font-size: 13px; line-height: 1.8; color: #4c6078; }
+.book-stage { --page-width: 310px; --page-height: 460px; height: calc(var(--page-height) + 40px); width: 100%; position: relative; display: flex; align-items: center; justify-content: center; perspective: 2500px; cursor: pointer; touch-action: pan-y pinch-zoom; -webkit-tap-highlight-color: transparent; user-select: none; }
+.book-stage.is-turning { cursor: progress; }
+.book-stage:focus-visible { outline: 2px solid #1558b0; outline-offset: 8px; }
+.portfolio-book { position: relative; width: var(--page-width); height: var(--page-height); transform-style: preserve-3d; box-shadow: 6px 8px 14px rgba(16,35,63,.25); }
+.portfolio-book[data-open="true"] { box-shadow: none; }
+.book-leaf { position: absolute; inset: 0; transform-origin: left center; transform-style: preserve-3d; transform: rotateY(0deg); }
+.book-face { position: absolute; inset: 0; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden; background: #10233f; }
+.book-front { border-radius: 0 8px 8px 0; }
+.book-back { transform: rotateY(180deg) translateZ(.01px); border-radius: 8px 0 0 8px; }
+.book-face img { object-fit: cover; pointer-events: none; }
+.book-face::after { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 12%; background: linear-gradient(to right, rgba(8,25,47,.24), transparent); pointer-events: none; }
+.book-back::after { left: auto; right: 0; background: linear-gradient(to left, rgba(8,25,47,.24), transparent); }
+.book-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 14px; color: #faf9f6; background: rgba(8,25,47,.82); font-size: 9px; line-height: 1.5; letter-spacing: .12em; text-transform: uppercase; }
+.book-cover-type, .book-end-type { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: flex-start; padding: 30px 24px; background: rgba(8,25,47,.32); color: white; text-align: left; }
+.book-cover-type > span, .book-end-type > span { font: 500 28px/1 'Cormorant Garamond', serif; }
+.book-cover-type small { margin-top: 7px; font-size: 6px; line-height: 1.6; letter-spacing: .2em; }
+.book-cover-type p { margin-top: auto; font: 300 38px/1.05 'Cormorant Garamond', serif; }
+.book-cover-type p em { color: #f2bd69; }
+.book-end-type { justify-content: center; align-items: center; text-align: center; background: rgba(8,25,47,.66); }
+.book-end-type p { font: 300 25px/1.25 'Cormorant Garamond', serif; margin-top: 28px; }
+.book-end-type small { font-size: 7px; letter-spacing: .18em; line-height: 1.6; margin-top: 32px; }
+.book-controls { display: inline-flex; align-items: center; justify-content: center; gap: 12px; margin-top: 24px; padding: 8px; border: 1px solid #10233f26; border-radius: 999px; background: #faf9f6; min-height: 48px; }
+.book-controls button { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; border-radius: 999px; padding: 8px 14px; font-size: 10px; font-weight: 500; letter-spacing: .05em; color: #10233f; transition: background-color .2s, opacity .2s; }
+.book-controls button:hover { background: #10233f0d; }
+.book-controls button:disabled { cursor: wait; opacity: .45; }
+.book-controls button[aria-disabled="true"] { cursor: wait; opacity: .45; }
+.book-controls [hidden] { display: none; }
+.book-controls .book-next { background: #10233f; color: white; }
+.book-controls .book-next:hover { background: #1558b0; }
+.book-controls .book-open { padding-inline: 18px; text-transform: uppercase; letter-spacing: .13em; }
+.book-controls svg, .book-portfolio-link svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.book-controls .book-open svg { color: #a86400; }
+.book-status { padding: 0 12px; border-inline: 1px solid #10233f1a; font-size: 9px; text-transform: uppercase; letter-spacing: .08em; color: #4c6078; }
+.book-instructions { margin: 18px auto 0; max-width: 50ch; font-size: 10px; line-height: 1.9; color: #4c6078; }
+.book-portfolio-link { display: inline-flex; align-items: center; gap: 20px; margin-top: 40px; padding-block: 10px; border-bottom: 1px solid #1558b04d; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #1558b0; transition: color .2s; }
+.book-portfolio-link:hover { color: #10233f; }
+.book-disclosure { margin-top: 20px; font-size: 9px; line-height: 1.8; letter-spacing: .05em; color: #4c6078; }
+@media (min-width: 640px) and (max-width: 1023px) { .book-stage { --page-width: 240px; --page-height: 350px; } }
+@media (max-width: 639px) {
+  .lookbook-section { padding: 72px 20px 64px; }
+  .lookbook-heading { margin-bottom: 32px; }
+  .lookbook-heading > p { font-size: 12px; max-width: 24ch; }
+  .book-stage { --page-width: min(170px, calc((100vw - 40px) / 2)); --page-height: calc(var(--page-width) * 1.45); }
+  .book-cover-type, .book-end-type { padding: 18px 12px; }
+  .book-cover-type > span, .book-end-type > span { font-size: 20px; }
+  .book-cover-type small { font-size: 4.8px; letter-spacing: .1em; }
+  .book-cover-type p { font-size: 24px; }
+  .book-caption { font-size: 6.5px; padding: 9px 8px; letter-spacing: .06em; }
+  .book-end-type p { font-size: 17px; margin-top: 16px; }
+  .book-end-type small { font-size: 5.5px; letter-spacing: .08em; margin-top: 20px; }
+  .book-controls { gap: 4px; }
+  .book-controls button { padding-inline: 10px; font-size: 9px; }
+  .book-controls button > span { display: none; }
+  .book-controls .book-open > span { display: inline; }
+  .book-status { font-size: 8px; padding-inline: 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .book-stage { perspective: none; } }

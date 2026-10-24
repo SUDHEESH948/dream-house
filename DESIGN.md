@@ -159,7 +159,7 @@ Three independently sourced photographs rotate at six-second intervals with two-
 
 ### Photography and scroll
 
-Use the independently sourced Unsplash imagery recorded in `public/images/provenance.json`, with descriptive alternatives from `content/image-descriptions.json`. Do not restore Y Architects photographs. Preserve the measured object-cover crop and wrappers. The studio portrait area now contains a collaborative studio image. General reveals run once near viewport entry; image reveals scrub their clipping, and parallax moves imagery gently through its wrapper. Lenis smooth scrolling and GSAP ScrollTrigger coordinate the horizontal gallery. Reduced motion disables these animations and preserves readable content.
+Use the independently sourced Unsplash imagery recorded in `public/images/provenance.json`, with descriptive alternatives from `content/image-descriptions.json`. Do not restore Y Architects photographs. Preserve the measured object-cover crop and wrappers. The studio portrait area now contains a collaborative studio image. General reveals run once near viewport entry; image reveals scrub their clipping, and parallax moves imagery gently through its wrapper. The homepage gallery is now a manual folding lookbook, described below. Lenis and ScrollTrigger continue to coordinate the remaining scroll effects. Reduced motion disables spatial page-turn animation and preserves the lookbook controls.
 
 ## Do's and Don'ts
 
@@ -178,3 +178,13 @@ Use the independently sourced Unsplash imagery recorded in `public/images/proven
 The user supplied the DreamHouse Architectural Engineering logo and business details. Header and footer use `public/brand/dreamhouse-logo.png`, prepared from the second supplied image with background extraction. Use royal blue `#1558b0`, amber `#df8d13`, navy `#10233f`, warm white `#faf9f6`, and warm neutral `#f4f0e8`. The logo sits on white for reliable legibility; navigation lines and hero emphasis use amber, and small accent text on light surfaces uses blue.
 
 Business location: Sulthan Bathery, Wayanad, Kerala. Mobile: 9446731418. Office: 04936 221770. Email: dreamhousesby@gmail.com. Services: civil engineering consulting, interior and exterior designing, structural designing, AutoCAD and 3D computer studio aided designing. Preserve these supplied facts. Reference staff names, professional registration numbers and unverified experience figures are removed. Stock portfolio imagery is disclosed as inspiration.
+
+## Homepage folding lookbook
+
+The user selected https://redlineinteriors.in/ as the interaction reference. Its public markup and client code were inspected: a closed photo book opens into two facing pages, with a left-edge hinge, two-sided leaves, 2500px perspective, and 700ms turns. Implemented in `src/components/PortfolioBook.tsx` and `src/app/lookbook.css`, in place of the homepage horizontal gallery. The existing hero and later sections are preserved.
+
+Twelve independently sourced photos form six leaves: a front cover, five interior spreads, and a back cover. Desktop pages are 310 × 460px, tablets use 240 × 350px, and narrow screens use at most 170px width per page at a 1.45 height ratio. Pages rotate from 0 to -180 degrees, with hidden backfaces and a visible physical spine shade. The wrapper recenters a closed cover, an open spread, or the closed back cover. Turns last 700ms, wrapper movement 600ms; replay uses 400ms reverse turns staggered by 45ms while recentering over 800ms.
+
+Use native controls for open, previous, next and replay. The primary control keeps its DOM identity and keyboard focus across states. Left/right arrows and Home work on the focused book; horizontal swipes over 40px turn pages while vertical panning and pinch zoom remain available. A turn lock prevents overlapping animations. Reduced motion commits the same states instantly. There is no autoplay. Avoid filters, opacity grouping or overflow clipping on the preserve-3d wrapper: these flatten the scene. Photo faces may clip their own imagery.
+
+Book-only spine gradients and offset shadow convey page material; they are not a new decorative system. Typography, blue-and-amber accents and business details remain DreamHouse's. The portfolio remains labeled as stock design inspiration. Source review and build validation passed; browser-based motion and responsive visual verification remain unavailable.

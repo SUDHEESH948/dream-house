@@ -20,6 +20,7 @@ Services: civil engineering consulting; interior and exterior designing; structu
 
 ## Capabilities and Constraints
 Responsive layouts, cinematic slideshow, smooth scrolling, image reveals, horizontal gallery and reduced-motion support. Phone links call the supplied numbers. Inquiry drafts open the supplied email address in the visitor's email app; nothing is reported as sent automatically.
+The user subsequently requested the book-folding interaction from https://redlineinteriors.in/ on the homepage. A manual folding lookbook replaces the homepage horizontal gallery, using the current independent photographs and DreamHouse branding. It supports click, swipe, keyboard navigation and replay, with immediate page changes for reduced motion.
 
 ## Evidence and Open Decisions
 No actual team biographies, professional registrations, years of experience or completed-project evidence were supplied. Remove reference identities and unverified credentials. Portfolio photographs are independent stock inspiration, disclosed on gallery pages. Exact street address remains unspecified; map shows Sulthan Bathery locality only. Browser screenshot verification has been unavailable.

@@ -17,7 +17,7 @@ npm run dev
 
 The reference's measured section markup is preserved in `content/reference.json` and rendered into React by `ReferenceMarkup`, which applies branding, Next.js Image, Next.js links, and functional inquiry handling. The source does not execute any reference JavaScript. Reusable navigation, slideshow, inquiry form, and scroll orchestration live in `src/components`.
 
-The source confirms a 6-second hero interval, 2-second crossfade, separate mobile hero crops, a 400vh horizontal gallery, image masking, and portrait parallax. GSAP/ScrollTrigger and Lenis implement these interactions. Reduced-motion mode uses static hero imagery, disables animated reveals, and presents selected works vertically.
+The hero retains its 6-second interval, 2-second crossfade and separate mobile crops. The homepage gallery now uses a folding photo lookbook inspired by the user-selected https://redlineinteriors.in/: click, swipe, or use arrow keys to turn two-sided pages, with previous/next/replay controls. GSAP animates page turns and recentering; CSS provides 3D perspective and hidden backfaces. Reduced-motion mode changes pages instantly. GSAP/ScrollTrigger and Lenis continue to handle the remaining image reveals and parallax.
 
 All photographs are independently sourced from Unsplash under the Unsplash License. No Y Architects photo is retained in the shipping assets. Sources and dimensions are recorded in `public/images/provenance.json`; descriptive alternatives are in `content/image-descriptions.json`. The hero includes locally optimized portrait crops. The former studio portrait area now uses a collaborative studio photograph.
 

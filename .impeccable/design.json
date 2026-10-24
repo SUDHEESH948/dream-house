@@ -104,11 +104,6 @@
         "purpose": "Smooth-wheel scroll coordination."
       },
       {
-        "name": "gallery-scrub",
-        "value": "0.8",
-        "purpose": "Horizontal track catch-up over 400vh section."
-      },
-      {
         "name": "image-reveal",
         "value": "scrub 1; top 90% to top 20%",
         "purpose": "Clip inset 15% 5% toward zero; radius 60px toward 20px."
@@ -117,6 +112,21 @@
         "name": "parallax",
         "value": "-4% to 4%",
         "purpose": "Gentle vertical photo travel."
+      },
+      {
+        "name": "book-turn",
+        "value": "700ms power2.inOut; rotationY 0 to -180deg",
+        "purpose": "Manual, reversible two-sided page turn."
+      },
+      {
+        "name": "book-recenter",
+        "value": "600ms; xPercent 0, 50, 100",
+        "purpose": "Center the closed front cover, open spread, or closed back cover."
+      },
+      {
+        "name": "book-replay",
+        "value": "400ms turns staggered 45ms; 800ms recenter",
+        "purpose": "Return the finished lookbook to its front cover."
       }
     ],
     "breakpoints": [
@@ -143,6 +153,37 @@
       "location": "Sulthan Bathery, Wayanad, Kerala",
       "logo": "public/brand/dreamhouse-logo.png",
       "business": "content/business.json"
+    },
+    "lookbook": {
+      "reference": "https://redlineinteriors.in/",
+      "source": "src/components/PortfolioBook.tsx",
+      "styles": "src/app/lookbook.css",
+      "replacement": "Homepage horizontal gallery only",
+      "photography": "Existing independent stock assets; no reference photos copied",
+      "perspective": "2500px",
+      "pages": {
+        "desktop": [
+          310,
+          460
+        ],
+        "tablet": [
+          240,
+          350
+        ],
+        "mobile": "min(170px, (100vw - 40px)/2) wide; height = width × 1.45"
+      },
+      "controls": [
+        "click left/right",
+        "horizontal swipe >40px",
+        "previous",
+        "next",
+        "replay",
+        "arrow keys",
+        "Home key"
+      ],
+      "accessibility": "Persistent primary button, focus transfer from hidden previous button, busy turn lock, visible focus, live spread status, pinch zoom allowed",
+      "reducedMotion": "Immediate state updates with the same controls; no automatic turns",
+      "verification": "Build, TypeScript, export links/images and business checks pass. Focus issue resolved in source review. Visual browser verification remains unavailable."
     }
   },
   "components": [

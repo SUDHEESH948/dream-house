@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import './lookbook.css';
 import { Navigation } from '@/components/Navigation';
 import { Motion } from '@/components/Motion';
 import { ReferenceMarkup } from '@/components/ReferenceMarkup';
