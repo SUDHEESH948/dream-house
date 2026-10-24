@@ -17,8 +17,10 @@ npm run dev
 
 The reference's measured section markup is preserved in `content/reference.json` and rendered into React by `ReferenceMarkup`, which applies branding, Next.js Image, Next.js links, and functional inquiry handling. The source does not execute any reference JavaScript. Reusable navigation, slideshow, inquiry form, and scroll orchestration live in `src/components`.
 
-The source confirms a 6-second hero interval, 2-second crossfade, separate mobile hero photography, a 400vh horizontal gallery, image masking, and portrait parallax. GSAP/ScrollTrigger and Lenis implement these interactions. Reduced-motion mode uses static hero imagery, disables animated reveals, and presents selected works vertically.
+The source confirms a 6-second hero interval, 2-second crossfade, separate mobile hero crops, a 400vh horizontal gallery, image masking, and portrait parallax. GSAP/ScrollTrigger and Lenis implement these interactions. Reduced-motion mode uses static hero imagery, disables animated reveals, and presents selected works vertically.
 
-Photos and placeholder project/team content come from https://yarchitect-seven.vercel.app/ at the user's direction. Image provenance is recorded in `public/images/provenance.json`. Dream House's actual contact information, team and project authorship still need to replace reference content before commercial use. The inquiry form validates and prepares a copyable draft locally; a real delivery service is not configured. No inquiry is falsely reported as sent.
+All photographs are independently sourced from Unsplash under the Unsplash License. No Y Architects photo is retained in the shipping assets. Sources and dimensions are recorded in `public/images/provenance.json`; descriptive alternatives are in `content/image-descriptions.json`. The hero includes locally optimized portrait crops. The former studio portrait area now uses a collaborative studio photograph.
+
+Project/team text remains demonstration content from the design reference. Stock photos illustrate the design and do not establish Dream House project authorship. Dream House's actual contact information, team and project details still need to replace reference content before commercial use. The inquiry form validates and prepares a copyable draft locally; a real delivery service is not configured. No inquiry is falsely reported as sent.
 
 Privacy and terms pages in the original reference return 404. Their footer links instead lead to the preview's form privacy and engagement notes.

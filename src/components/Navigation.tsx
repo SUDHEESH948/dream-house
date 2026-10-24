@@ -50,7 +50,7 @@ export function Navigation() {
       </button>
     </header>
     {open && <div id="site-menu" className="menu-overlay" ref={panel} role="dialog" aria-modal="true" aria-label="Main navigation" data-lenis-prevent>
-      <div className="menu-photo"><Image src="/images/img1.webp" alt="Architecture surrounded by tropical greenery" fill sizes="50vw" /></div>
+      <div className="menu-photo"><Image src="/images/residence-garden.webp" alt="Contemporary garden residence with warm timber and glass" fill sizes="50vw" /></div>
       <nav aria-label="Main"><ol>{links.map(([label, href], i) => <li key={href}>
         <Link className={`menu-link ${path === href || path === href.slice(0, -1) ? 'current' : ''}`} href={href} onClick={close}><span>0{i + 1}</span>{label}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></Link>
       </li>)}</ol><p>Architecture in dialogue with nature.</p></nav>

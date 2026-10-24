@@ -83,7 +83,7 @@ components:
 
 ## Overview
 
-The selected Y Architects reference is the visual authority. Dream House changes the brand name while retaining the reference's quiet architectural photography, measured composition, image crops and editorial rhythm. Forest greens and ivory frame warm materials; expressive serif typography sits beside restrained sans-serif labels.
+The selected Y Architects reference is the authority for layout, typography and motion. Dream House uses independently sourced Unsplash architecture and interior photographs, as requested by the user, while retaining the measured composition and editorial rhythm. No Y Architects photograph is retained. Forest greens and ivory frame warm materials; expressive serif typography sits beside restrained sans-serif labels.
 
 This document records the implemented source, not screenshot approval. Evidence is `src/app/globals.css`, `src/components/*.tsx`, `src-fonts.css` and the preserved Tailwind markup in `content/reference.json`. Browser visual verification was unavailable because the computer-use browser rejected the URL safety check. No generated composition was used, and no independent creative metaphor has been approved.
 
@@ -125,7 +125,7 @@ The frontmatter's headline role records the overlay navigation scale; existing e
 
 Preserve the reference markup's per-section geometry, widths, crops and spacing. Existing content uses centered maximum-width containers, mixed editorial grids and full-bleed photography rather than one universal card grid. Footer content uses a maximum width of 80rem and moves from one column to two and then four.
 
-The fixed header uses horizontal gutters of 160px on large screens, 64px from 768px through 1200px, and 24px below 768px. Hero copy follows these gutters. The hero occupies 100dvh with desktop and mobile minimum heights of 500px and 480px respectively. Its heading uses a fluid scale, with phrase gaps and top offset reduced on mobile. Dedicated mobile photographs replace desktop hero images below 768px; do not rely on a shared crop.
+The fixed header uses horizontal gutters of 160px on large screens, 64px from 768px through 1200px, and 24px below 768px. Hero copy follows these gutters. The hero occupies 100dvh with desktop and mobile minimum heights of 500px and 480px respectively. Its heading uses a fluid scale, with phrase gaps and top offset reduced on mobile. Dedicated 900 by 1200 portrait crops replace desktop hero images below 768px.
 
 Inner-page first sections start beneath the header. Two-column form rows become a single column below 768px. Reference Tailwind responsive utilities use the framework's existing breakpoints; custom header and hero rules additionally use 767px and 1200px boundaries.
 
@@ -155,11 +155,11 @@ Fields pair tracked uppercase labels with light-weight Montserrat values, a tran
 
 ### Hero
 
-Three original photographs rotate at six-second intervals with two-second opacity crossfades. Each has a separate mobile asset. Active heading entrance uses GSAP opacity, blur, scale and vertical movement over 1.6 seconds after a 0.3-second delay. Pause/resume is an explicit control. Hidden documents and reduced-motion preference suspend automatic cycling.
+Three independently sourced photographs rotate at six-second intervals with two-second opacity crossfades. Each has a separate mobile crop. Active heading entrance uses GSAP opacity, blur, scale and vertical movement over 1.6 seconds after a 0.3-second delay. Pause/resume is an explicit control. Hidden documents and reduced-motion preference suspend automatic cycling.
 
 ### Photography and scroll
 
-Use the supplied reference imagery with its measured object-cover crop and wrappers. General reveals run once near viewport entry; image reveals scrub their clipping, and parallax moves imagery gently through its wrapper. Lenis smooth scrolling and GSAP ScrollTrigger coordinate the horizontal gallery. Reduced motion disables these animations and preserves readable content.
+Use the independently sourced Unsplash imagery recorded in `public/images/provenance.json`, with descriptive alternatives from `content/image-descriptions.json`. Do not restore Y Architects photographs. Preserve the measured object-cover crop and wrappers. The studio portrait area now contains a collaborative studio image. General reveals run once near viewport entry; image reveals scrub their clipping, and parallax moves imagery gently through its wrapper. Lenis smooth scrolling and GSAP ScrollTrigger coordinate the horizontal gallery. Reduced motion disables these animations and preserves readable content.
 
 ## Do's and Don'ts
 

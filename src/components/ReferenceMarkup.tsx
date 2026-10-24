@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { createElement } from 'react';
 import { ContactForm } from './ContactForm';
 import { GalleryFilters } from './GalleryFilters';
+import imageDescriptions from '../../content/image-descriptions.json';
 
 const textOf = (node: DOMNode): string => 'data' in node ? node.data : node instanceof Element ? node.children.map(child => textOf(child as DOMNode)).join(' ') : '';
 const projectGrid = (node: Element) => node.attribs.class?.includes('sm:grid-cols-2') && node.attribs.class?.includes('lg:grid-cols-3');
@@ -34,7 +35,9 @@ export function ReferenceMarkup({ html }: { html: string }) {
         if (src.startsWith('/_next/image')) src = new URL(src, 'https://reference.local').searchParams.get('url') || src;
         const filename = src.split('/').pop()?.split('?')[0];
         if (!filename || filename.startsWith('logo')) return <></>;
-        return <Image src={'/images/' + filename.replace(/\.(png|jpe?g)$/i, '.webp')} alt={attrs.alt || 'Architectural project'}
+        const localFilename = filename.replace(/\.(png|jpe?g)$/i, '.webp');
+        const description = imageDescriptions[localFilename as keyof typeof imageDescriptions];
+        return <Image src={'/images/' + localFilename} alt={description || attrs.alt || 'Architectural project'}
           width={1600} height={1100} sizes="(max-width: 767px) 100vw, (max-width: 1100px) 90vw, 1300px"
           className={attrs.class} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />;
       }
