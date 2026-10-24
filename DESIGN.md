@@ -175,7 +175,7 @@ Use the independently sourced Unsplash imagery recorded in `public/images/proven
 
 ## Confirmed DreamHouse identity
 
-The user supplied the DreamHouse Architectural Engineering logo and business details. Header and footer use `public/brand/dreamhouse-logo.png`, prepared from the second supplied image with background extraction. Use royal blue `#1558b0`, amber `#df8d13`, navy `#10233f`, warm white `#faf9f6`, and warm neutral `#f4f0e8`. The logo sits on white for reliable legibility; navigation lines and hero emphasis use amber, and small accent text on light surfaces uses blue.
+The user supplied the DreamHouse Architectural Engineering logo and business details. Header and footer use `public/brand/dreamhouse-logo.png`, prepared from the second supplied image with background extraction. Use royal blue `#1558b0`, amber `#df8d13`, navy `#10233f`, warm white `#faf9f6`, and warm neutral `#f4f0e8`. The logo uses its transparent image directly, without a white plate in the header or footer; navigation lines and hero emphasis use amber, and small accent text on light surfaces uses blue.
 
 Business location: Sulthan Bathery, Wayanad, Kerala. Mobile: 9446731418. Office: 04936 221770. Email: dreamhousesby@gmail.com. Services: civil engineering consulting, interior and exterior designing, structural designing, AutoCAD and 3D computer studio aided designing. Preserve these supplied facts. Reference staff names, professional registration numbers and unverified experience figures are removed. Stock portfolio imagery is disclosed as inspiration.
 

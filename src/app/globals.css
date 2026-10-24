@@ -29,9 +29,9 @@ button { cursor: pointer; }
 .site-navigation > * { pointer-events: auto; }
 .wordmark { display: flex; flex-direction: column; gap: 4px; transition: color .5s, opacity .3s; }
 .wordmark:hover { opacity: .75; }
-.brand-logo { width: 188px; padding: 8px 10px; background: white; border-radius: 2px; }
+.brand-logo { width: 188px; padding: 8px 10px; background: transparent; }
 .brand-logo img { width: 100%; height: auto; display: block; }
-.footer-logo { display: block; width: 220px; padding: 12px; background: white; margin-bottom: 32px; }
+.footer-logo { display: block; width: 220px; padding: 12px; background: transparent; margin-bottom: 32px; }
 .footer-logo img { width: 100%; height: auto; }
 .wordmark > span { font-family: 'Cormorant Garamond', serif; font-size: 24px; letter-spacing: -.035em; font-weight: 500; line-height: 1; }
 .wordmark small { font-size: 5.4px; letter-spacing: .22em; font-weight: 500; }
