@@ -4,3 +4,5 @@ out/
 *.log
 *.tsbuildinfo
 .openai/local/
+
+.vercel
