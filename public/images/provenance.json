@@ -9,7 +9,8 @@
       "provider": "Unsplash",
       "license": "https://unsplash.com/license",
       "width": 1920,
-      "height": 1280
+      "height": 1280,
+      "alt": "Contemporary garden residence with warm timber and glass"
     },
     {
       "file": "residence-pool.webp",
@@ -17,7 +18,8 @@
       "provider": "Unsplash",
       "license": "https://unsplash.com/license",
       "width": 1920,
-      "height": 1274
+      "height": 1274,
+      "alt": "Modern white residence beside a blue swimming pool"
     },
     {
       "file": "residence-brick.webp",
@@ -25,7 +27,8 @@
       "provider": "Unsplash",
       "license": "https://unsplash.com/license",
       "width": 1920,
-      "height": 1610
+      "height": 1610,
+      "alt": "Contemporary home with brick, glass and a landscaped garden"
     },
     {
       "file": "interior-sunlight.webp",
@@ -33,7 +36,8 @@
       "provider": "Unsplash",
       "license": "https://unsplash.com/license",
       "width": 1920,
-      "height": 1440
+      "height": 1440,
+      "alt": "Sunlit living room with natural textures and plants"
     },
     {
       "file": "interior-dining.webp",
@@ -41,7 +45,8 @@
       "provider": "Unsplash",
       "license": "https://unsplash.com/license",
       "width": 1920,
-      "height": 1280
+      "height": 1280,
+      "alt": "Minimal dining space opening onto a courtyard"
     },
     {
       "file": "interior-staircase.webp",
@@ -49,7 +54,8 @@
       "provider": "Unsplash",
       "license": "https://unsplash.com/license",
       "width": 1920,
-      "height": 1280
+      "height": 1280,
+      "alt": "Airy open-plan living space and a timber staircase"
     },
     {
       "file": "residence-timber.webp",
@@ -57,7 +63,8 @@
       "provider": "Unsplash",
       "license": "https://unsplash.com/license",
       "width": 1920,
-      "height": 2880
+      "height": 2880,
+      "alt": "Modern facade with dark panels and warm timber detailing"
     },
     {
       "file": "interior-open-plan.webp",
@@ -65,7 +72,8 @@
       "provider": "Unsplash",
       "license": "https://unsplash.com/license",
       "width": 1920,
-      "height": 1306
+      "height": 1306,
+      "alt": "Open-plan interior with warm wood and neutral furnishings"
     },
     {
       "file": "interior-earth-tones.webp",
@@ -73,7 +81,8 @@
       "provider": "Unsplash",
       "license": "https://unsplash.com/license",
       "width": 1920,
-      "height": 1013
+      "height": 1013,
+      "alt": "Warm living room with earth tones and sculptural furniture"
     },
     {
       "file": "workspace-glass.webp",
@@ -81,7 +90,8 @@
       "provider": "Unsplash",
       "license": "https://unsplash.com/license",
       "width": 1920,
-      "height": 1282
+      "height": 1282,
+      "alt": "Modern workspace with glass partitions and daylight"
     },
     {
       "file": "studio-collaboration.webp",
@@ -89,15 +99,8 @@
       "provider": "Unsplash",
       "license": "https://unsplash.com/license",
       "width": 1920,
-      "height": 1282
-    },
-    {
-      "file": "urban-perspective.webp",
-      "source": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=90",
-      "provider": "Unsplash",
-      "license": "https://unsplash.com/license",
-      "width": 1920,
-      "height": 1280
+      "height": 1282,
+      "alt": "Collaborative design studio with a communal table and garden views"
     },
     {
       "file": "sculptural-courtyard.webp",
@@ -105,7 +108,8 @@
       "provider": "Unsplash",
       "license": "https://unsplash.com/license",
       "width": 1920,
-      "height": 2450
+      "height": 2450,
+      "alt": "Curved contemporary architecture framing an open sky"
     },
     {
       "file": "residence-tree-canopy.webp",
@@ -113,29 +117,12 @@
       "provider": "Unsplash",
       "license": "https://unsplash.com/license",
       "width": 1920,
-      "height": 1280
+      "height": 1280,
+      "alt": "Timber and glass residence beneath mature trees"
     },
     {
       "file": "residence-garden-mobile.webp",
       "source": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=90",
-      "provider": "Unsplash",
-      "license": "https://unsplash.com/license",
-      "width": 900,
-      "height": 1200,
-      "derivative": "Portrait crop of independently sourced desktop photograph"
-    },
-    {
-      "file": "interior-earth-tones-mobile.webp",
-      "source": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2000&q=90",
-      "provider": "Unsplash",
-      "license": "https://unsplash.com/license",
-      "width": 900,
-      "height": 1200,
-      "derivative": "Portrait crop of independently sourced desktop photograph"
-    },
-    {
-      "file": "residence-timber-mobile.webp",
-      "source": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=2000&q=90",
       "provider": "Unsplash",
       "license": "https://unsplash.com/license",
       "width": 900,

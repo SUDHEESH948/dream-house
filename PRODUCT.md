@@ -1,29 +1,42 @@
 # DreamHouse
-<!-- impeccable:product-schema 1 -->
 
-## Platform
-web
+## Product
 
-## Stack
-Next.js App Router, React, TypeScript, Tailwind CSS, GSAP/ScrollTrigger, Lenis and Next.js Image, as specified by the user.
+A responsive public website for DreamHouse Architectural Engineering, Sulthan Bathery, Wayanad, Kerala. The application lives directly in the workspace root.
 
-## Product Purpose
-A website for DreamHouse Architectural Engineering in Sulthan Bathery. Use original DreamHouse copy, confirmed business details, independent photographs and the existing editorial design language.
+## Confirmed business details
 
-## Brand Commitments
-Use the user's second logo: amber roof/DH mark and blue DreamHouse lettering. The authorized website palette uses royal blue, amber, deep navy and warm white. All photographs are independently sourced; do not use Y Architects photos.
+- Mobile: 9446731418
+- Office: 04936 221770
+- Email: dreamhousesby@gmail.com
+- Services: civil engineering consulting; interior and exterior designing; structural designing; AutoCAD and 3D computer studio aided designing.
+- Brand: supplied amber roof/DH mark and blue DreamHouse lettering.
+- Exact street address, team biographies, registrations and completed-project evidence have not been provided.
 
-## Confirmed Business Facts
-Location: Sulthan Bathery, Wayanad, Kerala. Mobile: 9446731418. Office: 04936 221770. Email: dreamhousesby@gmail.com.
+## Stack and content
 
-Services: civil engineering consulting; interior and exterior designing; structural designing; AutoCAD and 3D computer studio aided designing. Source: user-supplied business details image.
+Next.js App Router, React, TypeScript, Tailwind CSS, GSAP/ScrollTrigger, Lenis and local WebP photographs/fonts. Static export is generated in out/. Original services and six design-inspiration articles live in content/site.ts. Gallery images are independent stock inspiration, with provenance in public/images/provenance.json.
 
-## Capabilities and Constraints
-Responsive layouts, cinematic slideshow, smooth scrolling, image reveals, horizontal gallery and reduced-motion support. Phone links call the supplied numbers. Inquiry drafts open the supplied email address in the visitor's email app; nothing is reported as sent automatically.
-The user subsequently requested the book-folding interaction from https://redlineinteriors.in/ on the homepage. A manual folding lookbook replaces the homepage horizontal gallery, using the current independent photographs and DreamHouse branding. It supports click, swipe, keyboard navigation and replay, with immediate page changes for reduced motion.
+The form validates input and creates a copyable email draft. Phone/email links are actionable. The map shows the locality, with directions confirmed by calling the studio.
 
-## Evidence and Open Decisions
-No actual team biographies, professional registrations, years of experience or completed-project evidence were supplied. Remove reference identities and unverified credentials. Portfolio photographs are independent stock inspiration, disclosed on gallery pages. Exact street address remains unspecified; map shows Sulthan Bathery locality only. Browser screenshot verification has been unavailable.
+## Current experience
 
-## Original content revision
-All reference prose and project cases are removed. Native React pages and content/site.ts now provide original home, about, service, contact and design-idea content. Six inspiration articles replace copied project cases; no project authorship is implied.
+- Scroll-driven photographic hero with headline entrance, parallax, frame settling and a desktop interior image reveal.
+- Introduction with offset two-line heading, image crop reveal and independent image/text drift.
+- Manually operated folding lookbook with click, swipe, keyboard, previous/next/replay.
+- Concept video: initial landscape frame, scroll expansion to viewport, scroll-scrubbed construction sequence, then shrink to the original frame before the next section. Portrait fullscreen crops the sides.
+- Filterable gallery, individual design-idea articles, about, services and contact pages.
+- Footer with bottom-to-top wordmark reveal and aligned developer credit linked to winshineinfotech.com.
+- Upright typography throughout; no visible slideshow pause or video skip controls.
+- Mobile header and footer logos are 120px wide.
+- Reduced motion removes scroll animation and exposes native video controls.
+
+## Asset and performance decisions
+
+The original video is retained in assets/source/ and is not publicly shipped. The optimized video uses 240 keyframes across 240 frames, 720p, 24 fps, and fast-start metadata. Its embedded sparkle is blended out in the asset-generation script. Full preloading begins when approaching the section.
+
+Only one responsive hero crop is requested per device. Ten unused fonts, three unused photos, legacy reference material, old CSS and the retired horizontal-gallery controller were removed. ScrollTrigger refreshes are coalesced and respond to actual layout size changes. Build caches and exports are regenerable.
+
+## Verification limits
+
+Production build, TypeScript, local navigation/media/font references and business/original-content checks are verified. Browser performance and responsive interaction remain unmeasured because no browser is connected. Do not describe source inspection as visual approval.

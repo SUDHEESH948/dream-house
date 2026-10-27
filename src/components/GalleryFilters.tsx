@@ -14,7 +14,7 @@ export function GalleryFilters() {
     setCount(visible);
     window.dispatchEvent(new Event('resize'));
   }
-  return <><div className="gallery-filters" aria-label="Filter design ideas">
+  return <><div className="gallery-filters" aria-label="Filter Design ">
     {categories.map(category => <button key={category} type="button" aria-pressed={active === category} onClick={() => filter(category)}>{category}</button>)}
   </div><p className="sr-only" role="status">{count} design references shown</p></>;
 }

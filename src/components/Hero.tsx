@@ -1,53 +1,96 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import './hero.css';
 
-const slides = [
-  { image: 'residence-garden', first: 'Begin with', second: 'your idea.', alt: 'Contemporary garden residence with warm timber and glass' },
-  { image: 'interior-earth-tones', first: 'Make room', second: 'for living.', alt: 'Warm living room with earth tones and sculptural furniture' },
-  { image: 'residence-timber', first: 'Plan the', second: 'possibilities.', alt: 'Modern facade with dark panels and warm timber detailing' },
-];
+gsap.registerPlugin(ScrollTrigger);
 
 export function Hero() {
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
   const root = useRef<HTMLElement>(null);
-  const heading = useRef<HTMLHeadingElement>(null);
+
   useEffect(() => {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let timer: ReturnType<typeof setInterval> | undefined;
-    function schedule() {
-      clearInterval(timer);
-      if (!paused && !reduced.matches && !document.hidden) timer = setInterval(() => setActive(i => (i + 1) % slides.length), 6000);
-    }
-    schedule();
-    reduced.addEventListener('change', schedule);
-    document.addEventListener('visibilitychange', schedule);
-    return () => { clearInterval(timer); reduced.removeEventListener('change', schedule); document.removeEventListener('visibilitychange', schedule); };
-  }, [paused]);
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const context = gsap.context(() => {
-      gsap.fromTo(heading.current, { opacity: 0, filter: 'blur(8px)', scale: 0.96, y: 10 },
-        { opacity: 1, filter: 'blur(0px)', scale: 1, y: 0, duration: 1.6, ease: 'power3.out', delay: 0.3 });
+    const media = gsap.matchMedia();
+    media.add({
+      desktop: '(min-width: 768px)',
+      mobile: '(max-width: 767px)',
+      motion: '(prefers-reduced-motion: no-preference)',
+    }, context => {
+      if (!context.conditions?.motion || !root.current) return;
+      const desktop = context.conditions.desktop;
+      const select = gsap.utils.selector(root);
+
+      // Entrance and scroll animations own separate wrappers.
+      gsap.fromTo(select('.dh-hero-word'), { yPercent: 105 }, {
+        yPercent: 0, duration: 1.25, stagger: 0.14,
+        ease: 'expo.out', delay: 0.15, clearProps: 'transform',
+      });
+
+      const timeline = gsap.timeline({
+        defaults: { ease: 'none' },
+        scrollTrigger: {
+          trigger: root.current, start: 'top top', end: 'bottom bottom',
+          scrub: 0.65, invalidateOnRefresh: true,
+        },
+      });
+      timeline
+        .fromTo(select('.dh-hero-image'), { yPercent: -5, scale: 1.12 },
+          { yPercent: 5, scale: 1, duration: 1 }, 0)
+        .to(select('.dh-hero-frame'), {
+          clipPath: desktop ? 'inset(24px 32px 24px 32px round 20px)' : 'inset(12px 12px 12px 12px round 12px)',
+          duration: 0.85,
+        }, 0.15)
+        .to(select('.dh-hero-title-drift'), { yPercent: -22, duration: 1 }, 0)
+        .to(select('.dh-hero-introduction'), { y: -28, duration: 1 }, 0)
+        .to(select('.dh-hero-bottom'), { y: -16, duration: 1 }, 0);
+
+      if (desktop) {
+        timeline.fromTo(select('.dh-hero-detail'), {
+          yPercent: 22, clipPath: 'inset(100% 0% 0% 0% round 12px)',
+        }, {
+          yPercent: -8, clipPath: 'inset(0% 0% 0% 0% round 12px)', duration: 0.8,
+        }, 0.1);
+      }
     }, root);
-    return () => context.revert();
-  }, [active]);
-  return <section ref={root} className="hero" aria-label="Dream House architecture and interiors">
-    <div className="hero-images" aria-hidden="true">
-      {slides.map((slide, i) => <div key={slide.image} className={`hero-slide ${i === active ? 'active' : ''}`}>
-        <Image src={`/images/${slide.image}.webp`} alt="" fill sizes="100vw" priority={i === 0} className="hero-desktop" />
-        <Image src={`/images/${slide.image}-mobile.webp`} alt="" fill sizes="100vw" priority={i === 0} className="hero-mobile" />
-      </div>)}
+    return () => media.revert();
+  }, []);
+
+  return <section ref={root} className="dh-hero" aria-labelledby="dh-hero-title">
+    <div className="dh-hero-scene">
+      <div className="dh-hero-frame">
+        <div className="dh-hero-image">
+          <picture>
+            <source media="(max-width: 767px)" srcSet="/images/residence-garden-mobile.webp" />
+            <img src="/images/residence-garden.webp" alt="Contemporary timber and glass house opening onto a green garden" width={1920} height={1280} loading="eager" fetchPriority="high" decoding="async" />
+          </picture>
+        </div>
+        <div className="dh-hero-shade" />
+      </div>
+
+      <div className="dh-hero-content">
+        <div className="dh-hero-title-drift">
+          <h1 id="dh-hero-title" className="dh-hero-title">
+            <span className="dh-hero-line"><span className="dh-hero-word">Begin with</span></span>
+            <span className="dh-hero-line"><em className="dh-hero-word">your idea.</em></span>
+          </h1>
+        </div>
+        <div className="dh-hero-introduction">
+          <p>Thoughtful spaces begin with you.<br/>Consulting, design and drawing,<br/>together at DreamHouse.</p>
+          <a href="/contact/" className="dh-hero-contact">Let’s talk about your space <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
+        </div>
+      </div>
+
+      <div className="dh-hero-detail" aria-hidden="true">
+        <div className="dh-hero-detail-photo"><Image src="/images/interior-earth-tones.webp" alt="" fill sizes="(min-width: 768px) 28vw, 1px" /></div>
+        <p>Room for the way you live.</p>
+      </div>
+
+      <div className="dh-hero-bottom">
+        <p>Sulthan Bathery <span aria-hidden="true">·</span> Wayanad, Kerala</p>
+        <a href="#home-introduction" className="dh-hero-explore">Explore DreamHouse <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6" /></svg></span></a>
+      </div>
     </div>
-    <div className="hero-copy"><h1 ref={heading} key={active} className="hero-heading">
-      <span>{slides[active].first}</span><em>{slides[active].second}</em>
-    </h1></div>
-    <button className="hero-pause" type="button" onClick={() => setPaused(value => !value)} aria-label={paused ? 'Resume slideshow' : 'Pause slideshow'} aria-pressed={paused}>
-      <svg viewBox="0 0 24 24" aria-hidden="true">{paused ? <path d="m9 5 10 7-10 7Z" /> : <path d="M8 5v14M16 5v14" />}</svg>
-      <span>{paused ? 'Play' : 'Pause'}</span>
-    </button>
   </section>;
 }

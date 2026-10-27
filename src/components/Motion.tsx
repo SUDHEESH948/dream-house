@@ -14,11 +14,46 @@ export function Motion() {
     let lenis: Lenis | undefined;
     let tick: ((time: number) => void) | undefined;
     media.add('(prefers-reduced-motion: no-preference)', () => {
-      const cleanups: (() => void)[] = [];
       lenis = new Lenis({ duration: 1.2, smoothWheel: true, anchors: true });
       lenis.on('scroll', ScrollTrigger.update);
       tick = time => lenis?.raf(time * 1000);
       gsap.ticker.add(tick);
+      gsap.utils.toArray<HTMLElement>('.dh-footer-wordmark').forEach(wordmark => {
+        const text = wordmark.querySelector('.dh-footer-wordmark-text');
+        if (!text) return;
+        gsap.fromTo(text, { yPercent: 110 }, {
+          yPercent: 0,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: wordmark,
+            start: 'top 95%',
+            end: 'clamp(top 70%)',
+            scrub: 0.5,
+            invalidateOnRefresh: true,
+          },
+        });
+      });
+      gsap.utils.toArray<HTMLElement>('[data-intro-scene]').forEach(section => {
+        const photo = section.querySelector('.home-introduction-photo');
+        const image = section.querySelector('.home-introduction-photo-drift');
+        const title = section.querySelector('.home-introduction-title');
+        const copy = section.querySelector('.home-introduction-copy');
+        const distance = () => window.innerWidth >= 768 ? 36 : 14;
+        const travel = { trigger: section, start: 'top bottom', end: 'bottom top', scrub: 0.7, invalidateOnRefresh: true };
+        if (photo) gsap.fromTo(photo, { clipPath: 'inset(8% 6% 8% 6% round 80px)' }, {
+          clipPath: 'inset(0% 0% 0% 0% round 16px)', ease: 'none',
+          scrollTrigger: { trigger: photo, start: 'top 95%', end: 'top 30%', scrub: 0.7 },
+        });
+        if (image) gsap.fromTo(image, { yPercent: -6, scale: 1.06 }, {
+          yPercent: 6, scale: 1, ease: 'none', scrollTrigger: { ...travel },
+        });
+        if (title) gsap.fromTo(title, { y: distance }, {
+          y: () => -distance(), ease: 'none', scrollTrigger: { ...travel },
+        });
+        if (copy) gsap.fromTo(copy, { y: () => distance() * 1.6 }, {
+          y: () => -distance() * 0.6, ease: 'none', scrollTrigger: { ...travel },
+        });
+      });
       gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach(element => {
         const kind = element.dataset.reveal;
         gsap.fromTo(element, { autoAlpha: 0, y: kind === 'up' ? 35 : 0, x: kind === 'horizontal' ? -20 : 0, scale: kind === 'scale' ? 0.95 : 1 },
@@ -34,42 +69,38 @@ export function Motion() {
         gsap.fromTo(element, { yPercent: -4 }, { yPercent: 4, ease: 'none',
           scrollTrigger: { trigger: element.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
       });
-      gsap.utils.toArray<HTMLElement>('[data-gallery]').forEach(gallery => {
-        const track = gallery.querySelector<HTMLElement>('.w-max');
-        if (!track) return;
-        const animation = gsap.to(track, { x: () => -(track.scrollWidth - window.innerWidth), ease: 'none',
-          scrollTrigger: { trigger: gallery, start: 'top top', end: 'bottom bottom', scrub: 0.8, invalidateOnRefresh: true } });
-        const revealFocused = (event: FocusEvent) => {
-          const link = (event.target as HTMLElement).closest('a');
-          if (!link || !track.contains(link)) return;
-          const bounds = link.getBoundingClientRect();
-          if (bounds.left >= 0 && bounds.right <= window.innerWidth) return;
-          const currentX = Number(gsap.getProperty(track, 'x')) || 0;
-          const maxTravel = Math.max(1, track.scrollWidth - window.innerWidth);
-          const distance = gsap.utils.clamp(0, maxTravel, bounds.left - currentX - window.innerWidth * 0.1);
-          const progress = distance / maxTravel;
-          const trigger = animation.scrollTrigger;
-          if (!trigger) return;
-          const scroll = trigger.start + (trigger.end - trigger.start) * progress;
-          lenis?.scrollTo(scroll, { immediate: true });
-          if (!lenis) window.scrollTo({ top: scroll, behavior: 'instant' });
-          ScrollTrigger.update();
-          animation.progress(progress);
-        };
-        gallery.addEventListener('focusin', revealFocused);
-        cleanups.push(() => gallery.removeEventListener('focusin', revealFocused));
-        const progress = gallery.querySelector<HTMLElement>('[style*="scaleX"]');
-        if (progress) gsap.fromTo(progress, { scaleX: 0 }, { scaleX: 1, ease: 'none',
-          scrollTrigger: { trigger: gallery, start: 'top top', end: 'bottom bottom', scrub: true } });
-      });
-      return () => { cleanups.forEach(cleanup => cleanup()); lenis?.destroy(); if (tick) gsap.ticker.remove(tick); };
+      return () => { lenis?.destroy(); if (tick) gsap.ticker.remove(tick); };
     });
-    const refresh = () => ScrollTrigger.refresh();
+    let disposed = false;
+    let refreshFrame = 0;
+    const refresh = () => {
+      if (disposed || refreshFrame) return;
+      refreshFrame = requestAnimationFrame(() => {
+        refreshFrame = 0;
+        ScrollTrigger.refresh();
+      });
+    };
     document.fonts.ready.then(refresh);
     window.addEventListener('load', refresh);
-    const observer = new ResizeObserver(() => ScrollTrigger.refresh());
-    const main = document.querySelector('main'); if (main) observer.observe(main);
-    return () => { observer.disconnect(); window.removeEventListener('load', refresh); media.revert(); };
+    let previousWidth = -1;
+    let previousHeight = -1;
+    const observer = new ResizeObserver(([entry]) => {
+      if (!entry) return;
+      const { width, height } = entry.contentRect;
+      if (Math.abs(width - previousWidth) < 1 && Math.abs(height - previousHeight) < 1) return;
+      previousWidth = width;
+      previousHeight = height;
+      refresh();
+    });
+    const main = document.querySelector('main');
+    if (main) observer.observe(main);
+    return () => {
+      disposed = true;
+      observer.disconnect();
+      cancelAnimationFrame(refreshFrame);
+      window.removeEventListener('load', refresh);
+      media.revert();
+    };
   }, [pathname]);
   return null;
 }

@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { ideas } from '../../../content/site';
 import { AboutPage, ContactPage, GalleryPage, IdeaPage, ServicesPage } from '@/components/InteriorPages';
 export const dynamicParams = false;
-const pages = { about:'About DreamHouse', services:'Consulting, Design & Drawing Services', gallery:'Design Ideas', contact:'Contact DreamHouse' };
+const pages = { about:'About DreamHouse', services:'Consulting, Design & Drawing Services', gallery:'Design ', contact:'Contact DreamHouse' };
 export function generateStaticParams() { return [...Object.keys(pages).map(slug=>({slug:[slug]})), ...ideas.map(idea=>({slug:['gallery',idea.slug]}))]; }
 export async function generateMetadata({params}:{params:Promise<{slug:string[]}>}):Promise<Metadata> {
   const {slug}=await params;

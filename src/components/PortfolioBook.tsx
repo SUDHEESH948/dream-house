@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState, type KeyboardEvent, type TouchEvent } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { gsap } from 'gsap';
 
 const photographs = [
@@ -166,7 +165,5 @@ export function PortfolioBook() {
       </button>
     </div>
     <p id="book-instructions" className="book-instructions">Click a page or swipe to turn. Use the arrow keys when the book is focused.</p>
-    <Link className="book-portfolio-link" href="/gallery/">View the design ideas <Arrow /></Link>
-    <p className="book-disclosure">Photographic references for your brief. These are not completed DreamHouse commissions.</p>
   </section>;
 }

@@ -1,4 +1,4 @@
----
+﻿---
 name: Dream House
 description: Original DreamHouse architecture, engineering and design website.
 colors:
@@ -81,11 +81,37 @@ components:
 
 # Design System: Dream House
 
+## Gallery coverflow carousel
+
+The user supplied AliThemes' Framer DragableCarousel module as the gallery-top reference: https://framer.com/m/DragableCarousel-ADAPEh.js@fXOJxTG2NAtXIGjIOPmn . GalleryCarousel.tsx ports its distance-based 3D transforms, drag velocity projection and GSAP snap behavior to the local Next.js stack, without a Framer runtime dependency. Six existing inspiration images loop through a centered slide, with side rotation, depth, scaling and opacity. Navigation supports pointer drag, touch with vertical scrolling preserved, arrows, pagination, Home/End and left/right keys. Drag cancellation and lost capture settle the carousel; dragging suppresses accidental link clicks. Only the current slide link participates in keyboard navigation. There is no autoplay. Reduced motion removes depth/rotation and makes navigation instantaneous. Gallery headings use a compact two-column introduction on desktop and stack on mobile so the carousel appears near the top, above the existing filterable grid. At 320px controls fit within the 24px page gutters. Build, static export and slide/control counts were checked; live gestures and visual layout remain unverified without a connected browser.
+
+## Upright typography preference
+
+The user requested removing italic styling throughout the website. Emphasized phrases now use upright type through the global em/i rule, preserving the existing type families, sizes and brand accent colors. This supersedes earlier instructions to use italic hero phrases or editorial headings.
+
+## Scroll-driven hero revision
+
+## Expanding design film
+
+Exit follow-up: after playback finishes, the timeline holds the final frame, then restores the original landscape frame dimensions, corner radius, heading and captions before the sticky section releases. Scroll height is now 520svh desktop / 460svh mobile to accommodate that return stage. Video time remains on the completed home throughout the shrink; reversing scroll expands it again before reversing playback.
+
+The user requested the concept video to zoom to full screen while scrolling and then play through scrolling. DesignFilm now uses a 440svh desktop / 380svh mobile section with a full-viewport sticky scene. The first 26% of its timeline expands a centered 16:9 video frame to the viewport edges; heading and captions fade during this expansion. Video frame progression runs from 22% through 96%, followed by a short final-frame hold. The shared GSAP timeline reverses all stages when scrolling upward and uses 0.3-second scrub. Absolute frame dimensions are bounded to this contained media region and recomputed on viewport refresh; video uses object-fit cover so its proportions stay correct as the frame changes aspect ratio. Portrait fullscreen intentionally crops the sides. Existing all-keyframe encoding and coalesced seeks remain. Reduced motion restores an ordinary 16:9 player with native controls. Build and export checks passed; live browser verification is unavailable. This supersedes earlier film guidance that kept the entire frame visible throughout.
+
+The user requested a premium animated hero with parallax. Hero.tsx and hero.css replace the previous rotating slideshow with a sticky photographic scene: 180svh desktop / 155svh mobile. Independent photo drift, scale settling, headline drift and an inset frame follow a reversible GSAP timeline with 0.65-second scrub. Desktop additionally reveals a smaller interior photograph. Existing garden and interior assets, Playfair type, navy photographic shading, warm white and pale amber #f2bd69 remain; supporting white is #f0eee7. The heading is â€œBegin with your idea.â€ Contact and introduction links stay visible and keyboard accessible through the sequence. Navigation ink switching follows the actual hero boundary. Mobile omits the inset image; reduced motion presents one static scene without extended scroll distance. No autoplay or pause control is introduced. This supersedes earlier hero slideshow guidance. Production build and static checks passed; no browser was connected for rendered layout or motion verification.
+
+## Homepage introduction revision
+
+Parallax follow-up: the headline now breaks into two offset lines, above a larger 6:5 architectural photo and open introductory copy. Motion.tsx scopes a reversible inset-to-full photo reveal to data-intro-scene, with independent inner-image drift/scale, heading travel and a slower copy drift. Existing generic reveals are removed from these elements to prevent competing transforms. Desktop travel is 36px, mobile 14px, and GSAP matchMedia removes the entire sequence under reduced motion. Text stays visible without animation and the about link remains accessible. Wider spacing and 16px desktop copy support the larger photograph; mobile remains a 4:3 photo and 15px copy. This supersedes the earlier single-line desktop headline and static introduction guidance below. Build and export/content checks passed; live browser motion verification remains unavailable.
+
+Desktop follow-up: the heading now spans the section above an asymmetric two-column layout, with a wider landscape photograph on the left and vertically centered introductory copy on the right. Tablet uses equal columns. Below 768px the heading, photograph and copy remain stacked. This supersedes the earlier desktop arrangement described below.
+
+The user requested redesigning the â€œA better home starts on paperâ€ section after reviewing its narrow mobile layout. `home-introduction.css` now owns this section: a left-aligned heading and copy sit beside a tall photograph on desktop; below 768px the order is heading, 4:3 photograph, then full-width copy. Remove the previous overlapping inset panel from this surface. Mobile gutters stay at 24px, paragraphs use 15px type at 1.85 line height, and the about link has a minimum 56px target with a circular arrow. Existing factual copy, typography families, navy, blue and warm-white palette remain. Local supporting ink #344d6b matches the other studio sections. Build and export checks passed; rendered mobile verification remains unavailable.
+
 ## Overview
 
 The selected Y Architects reference is the authority for layout, typography and motion. Dream House uses independently sourced Unsplash architecture and interior photographs, as requested by the user, while retaining the measured composition and editorial rhythm. No Y Architects photograph is retained. Deep navy, warm white, royal blue and amber frame warm materials; expressive serif typography sits beside restrained sans-serif labels.
 
-This document records the implemented source, not screenshot approval. Evidence is `src/app/globals.css`, `src/components/*.tsx`, `src-fonts.css` and the preserved Tailwind markup in `content/reference.json`. Browser visual verification was unavailable because the computer-use browser rejected the URL safety check. No generated composition was used, and no independent creative metaphor has been approved.
+This document records the implemented source, not screenshot approval. Evidence is `src/app/globals.css`, `src/components/*.tsx`, `src/app/fonts.css` and the preserved Tailwind markup in `content/reference.json`. Browser visual verification was unavailable because the computer-use browser rejected the URL safety check. No generated composition was used, and no independent creative metaphor has been approved.
 
 **Key Characteristics:**
 - Large photographic surfaces and generous negative space.
@@ -115,7 +141,7 @@ Paper is the page canvas. Cream supports the inquiry draft and existing neutral 
 
 ## Typography
 
-Playfair Display supplies the hero's upright first phrase and italic second phrase. Cormorant Garamond supplies editorial headings, large navigation links, the wordmark and footer display. Montserrat supplies body copy, controls, captions and uppercase labels. Fonts are locally declared in `src-fonts.css`.
+Playfair Display supplies the hero's upright first phrase and italic second phrase. Cormorant Garamond supplies editorial headings, large navigation links, the wordmark and footer display. Montserrat supplies body copy, controls, captions and uppercase labels. Fonts are locally declared in `src/app/fonts.css`.
 
 The frontmatter's headline role records the overlay navigation scale; existing editorial headings retain their measured Tailwind sizes. Body records the form-text treatment rather than asserting a universal paragraph size. The source uses multiple small-label sizes, including finely tracked footer labels. Preserve these contextual differences.
 
@@ -159,7 +185,7 @@ Three independently sourced photographs rotate at six-second intervals with two-
 
 ### Photography and scroll
 
-Use the independently sourced Unsplash imagery recorded in `public/images/provenance.json`, with descriptive alternatives from `content/image-descriptions.json`. Do not restore Y Architects photographs. Preserve the measured object-cover crop and wrappers. The studio portrait area now contains a collaborative studio image. General reveals run once near viewport entry; image reveals scrub their clipping, and parallax moves imagery gently through its wrapper. The homepage gallery is now a manual folding lookbook, described below. Lenis and ScrollTrigger continue to coordinate the remaining scroll effects. Reduced motion disables spatial page-turn animation and preserves the lookbook controls.
+Use the independently sourced Unsplash imagery recorded in `public/images/provenance.json`, with descriptive alternatives from `public/images/provenance.json`. Do not restore Y Architects photographs. Preserve the measured object-cover crop and wrappers. The studio portrait area now contains a collaborative studio image. General reveals run once near viewport entry; image reveals scrub their clipping, and parallax moves imagery gently through its wrapper. The homepage gallery is now a manual folding lookbook, described below. Lenis and ScrollTrigger continue to coordinate the remaining scroll effects. Reduced motion disables spatial page-turn animation and preserves the lookbook controls.
 
 ## Do's and Don'ts
 
@@ -183,7 +209,7 @@ Business location: Sulthan Bathery, Wayanad, Kerala. Mobile: 9446731418. Office:
 
 The user selected https://redlineinteriors.in/ as the interaction reference. Its public markup and client code were inspected: a closed photo book opens into two facing pages, with a left-edge hinge, two-sided leaves, 2500px perspective, and 700ms turns. Implemented in `src/components/PortfolioBook.tsx` and `src/app/lookbook.css`, in place of the homepage horizontal gallery. The existing hero and later sections are preserved.
 
-Twelve independently sourced photos form six leaves: a front cover, five interior spreads, and a back cover. Desktop pages are 310 × 460px, tablets use 240 × 350px, and narrow screens use at most 170px width per page at a 1.45 height ratio. Pages rotate from 0 to -180 degrees, with hidden backfaces and a visible physical spine shade. The wrapper recenters a closed cover, an open spread, or the closed back cover. Turns last 700ms, wrapper movement 600ms; replay uses 400ms reverse turns staggered by 45ms while recentering over 800ms.
+Twelve independently sourced photos form six leaves: a front cover, five interior spreads, and a back cover. Desktop pages are 310 Ã— 460px, tablets use 240 Ã— 350px, and narrow screens use at most 170px width per page at a 1.45 height ratio. Pages rotate from 0 to -180 degrees, with hidden backfaces and a visible physical spine shade. The wrapper recenters a closed cover, an open spread, or the closed back cover. Turns last 700ms, wrapper movement 600ms; replay uses 400ms reverse turns staggered by 45ms while recentering over 800ms.
 
 Use native controls for open, previous, next and replay. The primary control keeps its DOM identity and keyboard focus across states. Left/right arrows and Home work on the focused book; horizontal swipes over 40px turn pages while vertical panning and pinch zoom remain available. A turn lock prevents overlapping animations. Reduced motion commits the same states instantly. There is no autoplay. Avoid filters, opacity grouping or overflow clipping on the preserve-3d wrapper: these flatten the scene. Photo faces may clip their own imagery.
 
@@ -191,3 +217,4 @@ Book-only spine gradients and offset shadow convey page material; they are not a
 
 ## Content authority ? latest revision
 The user requires completely different content from Y Architects. This supersedes earlier instructions to preserve reference prose or markup. content/reference.json and ReferenceMarkup are deleted. content/site.ts and native StudioSections, InteriorPages and Footer components own original copy. studio.css provides responsive editorial layouts for these native sections. Only confirmed DreamHouse business facts may be stated as facts. Gallery photographs illustrate ideas and must not be presented as completed commissions. Preserve the supplied logo, palette, independent photography, hero interaction and folding album.
+

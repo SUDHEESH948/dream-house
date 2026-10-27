@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
 import logo from '../../public/brand/dreamhouse-logo.png';
 
-const links = [['Home', '/'], ['About', '/about/'], ['Design ideas', '/gallery/'], ['Services', '/services/'], ['Contact', '/contact/']];
+const links = [['Home', '/'], ['About', '/about/'], ['Design ', '/gallery/'], ['Services', '/services/'], ['Contact', '/contact/']];
 export function Navigation() {
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(false);
@@ -15,7 +15,10 @@ export function Navigation() {
   const trigger = useRef<HTMLButtonElement>(null);
   const panel = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const update = () => setDark(window.scrollY > window.innerHeight * 0.78 || path !== '/');
+    const update = () => {
+      const hero = document.querySelector<HTMLElement>('.dh-hero');
+      setDark(path !== '/' || (hero ? hero.getBoundingClientRect().bottom <= 100 : window.scrollY > window.innerHeight * 0.78));
+    };
     update(); window.addEventListener('scroll', update, { passive: true });
     return () => window.removeEventListener('scroll', update);
   }, [path]);
@@ -44,7 +47,7 @@ export function Navigation() {
   return <>
     <header className={`site-navigation ${dark && !open ? 'dark-ink' : ''}`}>
       <Link href="/" className="wordmark brand-logo" aria-label="DreamHouse Architectural Engineering home" onClick={close}>
-        <Image src={logo} alt="DreamHouse Architectural Engineering" priority sizes="(max-width: 767px) 150px, 188px" />
+        <Image src={logo} alt="DreamHouse Architectural Engineering" priority sizes="(max-width: 767px) 100px, 160px" />
       </Link>
       <button ref={trigger} type="button" className={`menu-toggle ${open ? 'is-open' : ''}`} aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} aria-controls="site-menu" onClick={() => setOpen(value => !value)}>
         <span /><span />
