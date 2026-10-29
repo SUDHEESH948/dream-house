@@ -5,18 +5,22 @@ import Image from 'next/image';
 import { gsap } from 'gsap';
 
 const photographs = [
-  { image: 'interior-earth-tones', caption: 'Considered interiors', alt: 'Warm living room with earth tones and sculptural furniture' },
-  { image: 'interior-sunlight', caption: 'Room for light', alt: 'Sunlit living room with natural textures and plants' },
-  { image: 'interior-dining', caption: 'Everyday rituals', alt: 'Minimal dining space opening onto a courtyard' },
-  { image: 'residence-garden', caption: 'Open to nature', alt: 'Contemporary garden residence with timber and glass' },
-  { image: 'interior-staircase', caption: 'Connected spaces', alt: 'Airy living space with a timber staircase' },
-  { image: 'interior-open-plan', caption: 'A material dialogue', alt: 'Open-plan interior with wood and neutral furnishings' },
-  { image: 'residence-brick', caption: 'Form and texture', alt: 'Contemporary home with brick, glass and a garden' },
-  { image: 'workspace-glass', caption: 'Designed for working', alt: 'Modern workspace with glass partitions and daylight' },
-  { image: 'residence-timber', caption: 'Quiet geometry', alt: 'Modern facade with dark panels and timber detailing' },
-  { image: 'residence-tree-canopy', caption: 'Architecture in context', alt: 'Timber and glass residence beneath mature trees' },
-  { image: 'sculptural-courtyard', caption: 'Another perspective', alt: 'Curved architecture framing an open sky' },
-  { image: 'residence-pool', caption: 'Your next chapter', alt: 'Modern white residence beside a swimming pool' },
+  { image: 'residence-kerala-villa', caption: 'Kerala Heritage Villa', alt: 'Grand Kerala luxury residence with pitched tiled roofs, car porch and landscaped garden' },
+  { image: 'residence-modern-elevation', caption: 'Contemporary elevation', alt: 'Contemporary multi-level residence with geometric facade and landscaped garden' },
+  { image: 'interior-luxury-living', caption: 'Considered interiors', alt: 'Warm luxury living lounge with timber paneling and ambient lighting' },
+  { image: 'interior-dining-cove', caption: 'Everyday rituals & dining', alt: 'Sophisticated dining area with bespoke cove lighting and warm wood accents' },
+  { image: 'residence-courtyard-villa', caption: 'Courtyard living', alt: 'Modern tropical villa featuring an open courtyard and glass balconies' },
+  { image: 'interior-master-suite', caption: 'Private sanctuaries', alt: 'Elegant master bedroom with acoustic paneling and warm illumination' },
+  { image: 'residence-twilight-facade', caption: 'Twilight architecture', alt: 'Modern home illuminated at twilight highlighting bold geometric planes' },
+  { image: 'interior-designer-kitchen', caption: 'Culinary ergonomics', alt: 'Contemporary open-plan kitchen with central island and clean lines' },
+  { image: 'residence-minimalist-villa', caption: 'Minimalist geometry', alt: 'Sleek minimalist residential architecture with balanced proportions' },
+  { image: 'interior-acoustic-lounge', caption: 'Family acoustic lounge', alt: 'Warm family lounge with fluted acoustic paneling and custom cabinetry' },
+  { image: 'residence-tropical-estate', caption: 'Tropical modern home', alt: 'Kerala tropical residence surrounded by lush greenery and shaded overhangs' },
+  { image: 'residence-verandah-greens', caption: 'Open to nature', alt: 'Covered patio and sit-out framing expansive lawn and trees' },
+  { image: 'residence-panoramic-view', caption: 'Architecture in context', alt: 'Terraced residence integrated into hillside contours with valley vistas' },
+  { image: 'residence-glass-pavilion', caption: 'Connected spaces', alt: 'Daylight-filled glass pavilion opening seamlessly to garden grounds' },
+  { image: 'residence-terrace-garden', caption: 'Rooftop sky garden', alt: 'Open-air rooftop terrace garden with pergola and mountain views' },
+  { image: 'residence-geometric-compound', caption: 'Your next chapter', alt: 'Modern gated entrance and perimeter design with landscaped approach' },
 ];
 const sheets = Array.from({ length: photographs.length / 2 }, (_, i) => [photographs[i * 2], photographs[i * 2 + 1]]);
 const total = sheets.length;
@@ -146,7 +150,7 @@ export function PortfolioBook() {
         {sheets.map(([front, back], i) => <div key={front.image} className="book-leaf" ref={element => { leaves.current[i] = element; }}
           style={{ zIndex: turningSheet === i ? total + 2 : stack(i, page) }}>
           <div className="book-face book-front" aria-hidden={i !== page}>
-            <Image src={`/images/${front.image}.webp`} alt={front.alt} fill sizes="(max-width: 639px) 170px, (max-width: 1023px) 240px, 310px" draggable={false} />
+            <Image src={`/images/${front.image}.webp`} alt={front.alt} fill sizes="(max-width: 639px) 170px, (max-width: 1023px) 240px, 310px" draggable={false} priority={i === 0} />
             {i === 0 ? <div className="book-cover-type"><span>DreamHouse</span><small>ARCHITECTURAL ENGINEERING</small><p>A collection of<br/><em>possibilities.</em></p></div> : <span className="book-caption">{front.caption}</span>}
           </div>
           <div className="book-face book-back" aria-hidden={i !== page - 1}>

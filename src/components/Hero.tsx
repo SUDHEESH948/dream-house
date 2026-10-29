@@ -83,7 +83,7 @@ export function Hero() {
       </div>
 
       <div className="dh-hero-detail" aria-hidden="true">
-        <div className="dh-hero-detail-photo"><Image src="/images/interior-earth-tones.webp" alt="" fill sizes="(min-width: 768px) 28vw, 1px" /></div>
+        <div className="dh-hero-detail-photo"><Image src="/images/interior-luxury-living.webp" alt="" fill sizes="(min-width: 768px) 28vw, 1px" /></div>
         <p>Room for the way you live.</p>
       </div>
 

@@ -7,21 +7,28 @@ import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
 import logo from '../../public/brand/dreamhouse-logo.png';
 
-const links = [['Home', '/'], ['About', '/about/'], ['Design ', '/gallery/'], ['Services', '/services/'], ['Contact', '/contact/']];
+const links = [['Home', '/'], ['About', '/about/'], ['Design', '/gallery/'], ['Services', '/services/'], ['Contact', '/contact/']];
 export function Navigation() {
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const path = usePathname();
   const trigger = useRef<HTMLButtonElement>(null);
   const panel = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const update = () => {
       const hero = document.querySelector<HTMLElement>('.dh-hero');
-      setDark(path !== '/' || (hero ? hero.getBoundingClientRect().bottom <= 100 : window.scrollY > window.innerHeight * 0.78));
+      const footer = document.querySelector<HTMLElement>('.dh-footer');
+      setDark(path !== '/' || (hero ? hero.getBoundingClientRect().bottom <= 80 : window.scrollY > window.innerHeight * 0.78));
+      if (footer) {
+        setHidden(footer.getBoundingClientRect().top <= 80);
+      }
     };
     update(); window.addEventListener('scroll', update, { passive: true });
     return () => window.removeEventListener('scroll', update);
   }, [path]);
+
   useEffect(() => {
     if (!open) return;
     const previousOverflow = document.body.style.overflow;
@@ -43,9 +50,11 @@ export function Navigation() {
     document.addEventListener('keydown', keydown);
     return () => { document.body.style.overflow = previousOverflow; animation?.kill(); document.removeEventListener('keydown', keydown); };
   }, [open]);
+
   function close() { setOpen(false); trigger.current?.focus(); }
+
   return <>
-    <header className={`site-navigation ${dark && !open ? 'dark-ink' : ''}`}>
+    <header className={`site-navigation ${dark && !open ? 'dark-ink' : ''} ${hidden && !open ? 'is-hidden' : ''}`}>
       <Link href="/" className="wordmark brand-logo" aria-label="DreamHouse Architectural Engineering home" onClick={close}>
         <Image src={logo} alt="DreamHouse Architectural Engineering" priority sizes="(max-width: 767px) 100px, 160px" />
       </Link>
@@ -54,7 +63,7 @@ export function Navigation() {
       </button>
     </header>
     {open && <div id="site-menu" className="menu-overlay" ref={panel} role="dialog" aria-modal="true" aria-label="Main navigation" data-lenis-prevent>
-      <div className="menu-photo"><Image src="/images/residence-garden.webp" alt="Contemporary garden residence with warm timber and glass" fill sizes="50vw" /></div>
+      <div className="menu-photo"><Image src="/images/residence-modern-elevation.webp" alt="Contemporary residence elevation and garden" fill sizes="50vw" /></div>
       <nav aria-label="Main"><ol>{links.map(([label, href], i) => <li key={href}>
         <Link className={`menu-link ${path === href || path === href.slice(0, -1) ? 'current' : ''}`} href={href} onClick={close}><span>0{i + 1}</span>{label}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></Link>
       </li>)}</ol><p>DreamHouse Architectural Engineering<br/>Sulthan Bathery, Wayanad</p></nav>

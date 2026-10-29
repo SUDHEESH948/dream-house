@@ -98,22 +98,22 @@ export function GalleryCarousel() {
   function pointerMove(event: PointerEvent<HTMLDivElement>) {
     const current = drag.current;
     if (current.pointer !== event.pointerId) return;
-    const dx = event.clientX - current.startX;
-    const dy = event.clientY - current.startY;
+    const deltaX = event.clientX - current.startX;
+    const deltaY = event.clientY - current.startY;
     if (!current.horizontal) {
-      if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 8) { current.pointer = -1; snap(Math.round(position.current.value)); return; }
-      if (Math.abs(dx) < 8) return;
+      if (Math.abs(deltaX) < 8 && Math.abs(deltaY) < 8) return;
+      if (Math.abs(deltaY) >= Math.abs(deltaX)) { current.pointer = -1; return; }
       current.horizontal = true;
-      moved.current = true;
-      event.currentTarget.setPointerCapture(event.pointerId);
-      event.currentTarget.classList.add('is-dragging');
+      stage.current?.classList.add('is-dragging');
+      stage.current?.setPointerCapture(event.pointerId);
     }
+    moved.current = true;
     const now = performance.now();
-    const elapsed = now - current.lastTime;
-    if (elapsed > 0) current.velocity = (event.clientX - current.lastX) / elapsed;
+    const elapsed = Math.max(16, now - current.lastTime);
+    current.velocity = (event.clientX - current.lastX) / elapsed;
     current.lastX = event.clientX;
     current.lastTime = now;
-    position.current.value = current.startValue - dx / metrics.current.step;
+    position.current.value = current.startValue - deltaX / metrics.current.step;
     scheduleRender();
   }
 
@@ -121,20 +121,16 @@ export function GalleryCarousel() {
     const current = drag.current;
     if (current.pointer !== event.pointerId) return;
     current.pointer = -1;
-    event.currentTarget.classList.remove('is-dragging');
-    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
-    if (!current.horizontal) { snap(Math.round(position.current.value)); return; }
-    const velocity = cancelled || performance.now() - current.lastTime > 100 ? 0 : current.velocity;
-    const projection = gsap.utils.clamp(-1.5, 1.5, velocity * 120 / metrics.current.step);
-    snap(Math.round(position.current.value - projection));
+    stage.current?.classList.remove('is-dragging');
+    if (stage.current?.hasPointerCapture(event.pointerId)) stage.current.releasePointerCapture(event.pointerId);
+    if (cancelled) { snap(target.current); return; }
+    const momentum = -current.velocity * 0.22;
+    snap(Math.round(position.current.value + momentum));
   }
 
   function keyDown(event: KeyboardEvent<HTMLDivElement>) {
-    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
-    event.preventDefault();
-    if (event.key === 'Home') snap(target.current - wrap(target.current));
-    else if (event.key === 'End') snap(target.current + count - 1 - wrap(target.current));
-    else snap(target.current + (event.key === 'ArrowRight' ? 1 : -1));
+    if (event.key === 'ArrowRight') { event.preventDefault(); snap(target.current + 1); }
+    else if (event.key === 'ArrowLeft') { event.preventDefault(); snap(target.current - 1); }
   }
 
   return <section className="gallery-carousel" aria-label="Featured design inspiration" aria-roledescription="carousel">
@@ -145,7 +141,7 @@ export function GalleryCarousel() {
       {ideas.map((idea, index) => <article key={idea.slug} ref={element => { cards.current[index] = element; }}
         className="gallery-carousel-slide" data-slide={index} role="group" aria-hidden={index !== active} aria-roledescription="slide" aria-label={`${index + 1} of ${count}: ${idea.title}`}>
         <Link href={`/gallery/${idea.slug}/`} tabIndex={index === active ? 0 : -1} onFocus={() => { if (index !== active) snap(target.current + index - active); }}>
-          <Image src={`/images/${idea.image}.webp`} alt={idea.focus} fill sizes="(max-width: 767px) 76vw, 420px" draggable={false} />
+          <Image src={`/images/${idea.image}.webp`} alt={idea.focus} fill sizes="(max-width: 767px) 76vw, 420px" draggable={false} priority={index < 2} />
           <div className="gallery-carousel-slide-copy"><p>{idea.category}</p><h2>{idea.title}</h2></div>
         </Link>
       </article>)}
