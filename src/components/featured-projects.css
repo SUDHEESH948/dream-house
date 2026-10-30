@@ -1,0 +1,193 @@
+/* Featured Projects Component Styles */
+
+.featured-projects-section {
+  position: relative;
+  background: var(--paper, #faf9f6);
+  padding-block: clamp(56px, 7vw, 96px) clamp(36px, 4vw, 56px);
+  border-top: 1px solid rgba(16, 35, 63, 0.06);
+}
+
+.featured-projects-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: clamp(28px, 3.5vw, 44px);
+}
+
+.featured-projects-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brand-blue, #1558b0);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.featured-projects-badge::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--brand-amber, #df8d13);
+}
+
+.featured-projects-title {
+  font-family: var(--font-serif, 'Cormorant Garamond', serif);
+  font-size: clamp(32px, 4.2vw, 54px);
+  font-weight: 300;
+  line-height: 1.12;
+  color: var(--ink, #10233f);
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.featured-projects-title em {
+  font-style: normal;
+  color: var(--brand-blue, #1558b0);
+}
+
+/* 3 images in a single row on desktop (4 rows x 3 images = 12 images) */
+.featured-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2.2vw, 28px);
+  width: 100%;
+}
+
+@media (max-width: 1023px) {
+  .featured-projects-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 639px) {
+  .featured-projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .featured-projects-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}
+
+/* Curved Image Cards */
+.featured-project-card {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 18px; /* Curved corners */
+  background: #eae5dc;
+  border: 1px solid rgba(16, 35, 63, 0.08);
+  box-shadow: 0 4px 18px rgba(16, 35, 63, 0.04);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (max-width: 639px) {
+  .featured-project-card {
+    border-radius: 14px;
+  }
+}
+
+.featured-project-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(21, 88, 176, 0.28);
+  box-shadow: 0 14px 32px rgba(16, 35, 63, 0.12);
+}
+
+.featured-project-img {
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.featured-project-card:hover .featured-project-img {
+  transform: scale(1.06);
+}
+
+/* Subtle overlay on hover */
+.featured-project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(16, 35, 63, 0.75) 100%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(12px, 1.5vw, 18px);
+}
+
+.featured-project-card:hover .featured-project-overlay,
+.featured-project-card:focus-visible .featured-project-overlay {
+  opacity: 1;
+}
+
+.featured-project-overlay-title {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  transform: translateY(6px);
+  transition: transform 0.35s ease;
+}
+
+.featured-project-card:hover .featured-project-overlay-title {
+  transform: translateY(0);
+}
+
+/* View More Button Container */
+.featured-projects-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: clamp(36px, 4.5vw, 52px);
+}
+
+.featured-projects-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 16px 36px;
+  border-radius: 9999px;
+  background: #10233f;
+  color: #faf9f6;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(223, 141, 19, 0.35);
+  box-shadow: 0 4px 16px rgba(16, 35, 63, 0.14);
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.featured-projects-btn:hover {
+  background: #1558b0;
+  border-color: #df8d13;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(21, 88, 176, 0.25);
+}
+
+.featured-projects-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  transition: transform 0.3s ease;
+}
+
+.featured-projects-btn:hover svg {
+  transform: translateX(4px);
+}
+

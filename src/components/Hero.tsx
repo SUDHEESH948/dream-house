@@ -62,8 +62,8 @@ export function Hero() {
       <div className="dh-hero-frame">
         <div className="dh-hero-image">
           <picture>
-            <source media="(max-width: 767px)" srcSet="/images/residence-garden-mobile.webp" />
-            <img src="/images/residence-garden.webp" alt="Contemporary timber and glass house opening onto a green garden" width={1920} height={1280} loading="eager" fetchPriority="high" decoding="async" />
+            <source media="(max-width: 767px)" srcSet="/images/Twilight%20Modern%20Luxury%20Home.png" />
+            <img src="/images/Twilight%20Modern%20Luxury%20Home.png" alt="Twilight Modern Luxury Residence - DreamHouse Architectural Engineering" width={1920} height={1280} loading="eager" fetchPriority="high" decoding="async" />
           </picture>
         </div>
         <div className="dh-hero-shade" />

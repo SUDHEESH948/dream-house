@@ -9,8 +9,8 @@ interface CraftingLandmarksProps {
   images?: ProjectImage[];
 }
 
-const INITIAL_DISPLAY_COUNT = 8;
-const LOAD_MORE_STEP = 5;
+const INITIAL_DISPLAY_COUNT = 9;
+const LOAD_MORE_STEP = 6;
 
 export function CraftingLandmarks({ images: initialImages }: CraftingLandmarksProps) {
   const images = initialImages && initialImages.length > 0 ? initialImages : FALLBACK_PROJECT_IMAGES;
@@ -85,7 +85,7 @@ export function CraftingLandmarks({ images: initialImages }: CraftingLandmarksPr
           </p>
         </header>
 
-        {/* Responsive Gallery Grid: 4 columns on desktop, 3 columns on mobile */}
+        {/* Responsive Gallery Grid: 3 columns on desktop, tablet, and mobile */}
         <div
           className="crafting-landmarks-grid"
           role="region"
@@ -112,7 +112,7 @@ export function CraftingLandmarks({ images: initialImages }: CraftingLandmarksPr
                   src={image.src}
                   alt={image.alt || `DreamHouse Project Landmark ${displayNumber}`}
                   fill
-                  sizes="(max-width: 639px) 33vw, (max-width: 1023px) 33vw, 25vw"
+                  sizes="(max-width: 639px) 33vw, (max-width: 1023px) 33vw, 33vw"
                   className="crafting-landmarks-img"
                   loading="lazy"
                 />
@@ -138,33 +138,22 @@ export function CraftingLandmarks({ images: initialImages }: CraftingLandmarksPr
           })}
         </div>
 
-        {/* Load More Button & Progress Bar */}
-        <div className="crafting-landmarks-footer">
-          <div className="crafting-landmarks-progress" aria-hidden="true">
-            <div
-              className="crafting-landmarks-progress-fill"
-              style={{ width: `${Math.round((visibleCount / totalCount) * 100)}%` }}
-            />
-          </div>
-
-          <p className="crafting-landmarks-counter" role="status">
-            Showing {visibleImages.length} of {totalCount} landmarks
-          </p>
-
-          {hasMore && (
+        {/* Load More Button */}
+        {hasMore && (
+          <div className="crafting-landmarks-footer">
             <button
               type="button"
               className="crafting-landmarks-btn"
               onClick={handleLoadMore}
-              aria-label={`Load 5 more landmarks. Currently showing ${visibleImages.length} of ${totalCount}`}
+              aria-label="Load More Landmarks"
             >
               <span>Load More Landmarks</span>
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 5v14M5 12l7 7 7-7" />
               </svg>
             </button>
-          )}
-        </div>
+          </div>
+        )}
       </div>
 
       {/* Lightbox / Preview Modal */}

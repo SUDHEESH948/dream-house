@@ -54,11 +54,11 @@
   margin: 0;
 }
 
-/* Responsive Gallery Grid: Exactly 4 columns on desktop, 3 columns on mobile & tablet */
+/* Responsive Gallery Grid: 3 columns on desktop, tablet, and mobile */
 .crafting-landmarks-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(12px, 2vw, 24px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 24px);
   width: 100%;
 }
 
