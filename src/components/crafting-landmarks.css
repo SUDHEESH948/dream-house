@@ -1,0 +1,494 @@
+/* Crafting Landmarks Section Styles */
+
+.crafting-landmarks-section {
+  position: relative;
+  padding-block: clamp(60px, 8vw, 120px);
+  background: var(--paper, #faf9f6);
+  border-top: 1px solid rgba(16, 35, 63, 0.08);
+}
+
+.crafting-landmarks-header {
+  margin-bottom: clamp(32px, 4vw, 56px);
+}
+
+.crafting-landmarks-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #1558b0;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.crafting-landmarks-badge::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: #df8d13;
+}
+
+.crafting-landmarks-title {
+  font-family: var(--font-serif, 'Cormorant Garamond', serif);
+  font-size: clamp(36px, 5vw, 68px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: #10233f;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.crafting-landmarks-title em {
+  font-style: normal;
+  color: #1558b0;
+}
+
+.crafting-landmarks-subtitle {
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: 1.8;
+  color: #344d6b;
+  max-width: 64ch;
+  margin: 0;
+}
+
+/* Responsive Gallery Grid: Exactly 4 columns on desktop, 3 columns on mobile & tablet */
+.crafting-landmarks-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 24px);
+  width: 100%;
+}
+
+@media (max-width: 1023px) {
+  .crafting-landmarks-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(8px, 1.6vw, 16px);
+  }
+}
+
+@media (max-width: 639px) {
+  .crafting-landmarks-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+}
+
+/* Gallery Item Card */
+.crafting-landmarks-card {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #eae5dc;
+  cursor: pointer;
+  border: 1px solid rgba(16, 35, 63, 0.08);
+  box-shadow: 0 4px 18px rgba(16, 35, 63, 0.04);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 639px) {
+  .crafting-landmarks-card {
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(16, 35, 63, 0.03);
+  }
+}
+
+.crafting-landmarks-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(223, 141, 19, 0.45);
+  box-shadow: 0 14px 30px rgba(16, 35, 63, 0.12);
+}
+
+.crafting-landmarks-card:active {
+  transform: scale(0.98);
+}
+
+.crafting-landmarks-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  will-change: transform;
+}
+
+.crafting-landmarks-card:hover .crafting-landmarks-img {
+  transform: scale(1.07);
+}
+
+/* Subtle overlay on hover */
+.crafting-landmarks-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(16, 35, 63, 0.75) 0%, rgba(16, 35, 63, 0.1) 50%, transparent 100%);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(10px, 1.8vw, 20px);
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.crafting-landmarks-card:hover .crafting-landmarks-overlay {
+  opacity: 1;
+}
+
+.crafting-landmarks-overlay-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: #faf9f6;
+}
+
+.crafting-landmarks-overlay-title {
+  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #faf9f6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.crafting-landmarks-overlay-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(223, 141, 19, 0.9);
+  color: #10233f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: 8px;
+  transform: scale(0.85);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.crafting-landmarks-card:hover .crafting-landmarks-overlay-icon {
+  transform: scale(1);
+}
+
+.crafting-landmarks-overlay-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+@media (max-width: 639px) {
+  .crafting-landmarks-overlay {
+    padding: 6px;
+  }
+  .crafting-landmarks-overlay-title {
+    display: none;
+  }
+  .crafting-landmarks-overlay-icon {
+    width: 22px;
+    height: 22px;
+    margin-left: auto;
+  }
+  .crafting-landmarks-overlay-icon svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* Load More Container & Controls */
+.crafting-landmarks-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: clamp(40px, 5vw, 64px);
+  gap: 16px;
+}
+
+.crafting-landmarks-counter {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4c6078;
+  font-weight: 500;
+}
+
+.crafting-landmarks-progress {
+  width: min(240px, 80%);
+  height: 3px;
+  background: rgba(16, 35, 63, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.crafting-landmarks-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #1558b0, #df8d13);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 3px;
+}
+
+.crafting-landmarks-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 16px 36px;
+  border-radius: 9999px;
+  background: #10233f;
+  color: #faf9f6;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(223, 141, 19, 0.35);
+  box-shadow: 0 4px 16px rgba(16, 35, 63, 0.14);
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.crafting-landmarks-btn:hover {
+  background: #1558b0;
+  border-color: #df8d13;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(21, 88, 176, 0.25);
+}
+
+.crafting-landmarks-btn:active {
+  transform: translateY(0);
+}
+
+.crafting-landmarks-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  transition: transform 0.3s ease;
+}
+
+.crafting-landmarks-btn:hover svg {
+  transform: translateY(2px);
+}
+
+/* Lightbox Modal */
+.crafting-lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(16, 35, 63, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(16px, 2.5vw, 32px);
+  animation: craftingLightboxFadeIn 0.3s ease-out;
+  touch-action: manipulation;
+}
+
+@keyframes craftingLightboxFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.crafting-lightbox-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1300px;
+  z-index: 10;
+}
+
+.crafting-lightbox-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.crafting-lightbox-heading {
+  font-family: var(--font-serif, 'Cormorant Garamond', serif);
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 300;
+  color: #faf9f6;
+  letter-spacing: -0.01em;
+}
+
+.crafting-lightbox-count {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #df8d13;
+  font-weight: 500;
+}
+
+.crafting-lightbox-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(250, 249, 246, 0.1);
+  color: #faf9f6;
+  border: 1px solid rgba(250, 249, 246, 0.2);
+  cursor: pointer;
+  transition: background-color 0.25s, transform 0.25s, color 0.25s;
+}
+
+.crafting-lightbox-close:hover {
+  background: #df8d13;
+  color: #10233f;
+  transform: rotate(90deg);
+}
+
+.crafting-lightbox-close svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+/* Lightbox Main Stage */
+.crafting-lightbox-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1300px;
+  flex: 1;
+  min-height: 0;
+  margin-block: 16px;
+}
+
+.crafting-lightbox-img-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 92vw;
+  max-height: 76vh;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  background: #0b172a;
+}
+
+.crafting-lightbox-img {
+  max-width: 92vw;
+  max-height: 76vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  animation: craftingLightboxZoom 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes craftingLightboxZoom {
+  from {
+    opacity: 0.6;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Navigation Arrows */
+.crafting-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(16, 35, 63, 0.7);
+  backdrop-filter: blur(8px);
+  color: #faf9f6;
+  border: 1px solid rgba(250, 249, 246, 0.25);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 20;
+}
+
+.crafting-lightbox-nav:hover {
+  background: #1558b0;
+  border-color: #df8d13;
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.crafting-lightbox-prev {
+  left: 12px;
+}
+
+.crafting-lightbox-next {
+  right: 12px;
+}
+
+.crafting-lightbox-nav svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+@media (max-width: 767px) {
+  .crafting-lightbox-nav {
+    width: 42px;
+    height: 42px;
+  }
+  .crafting-lightbox-prev {
+    left: 4px;
+  }
+  .crafting-lightbox-next {
+    right: 4px;
+  }
+}
+
+/* Lightbox Footer */
+.crafting-lightbox-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1300px;
+  padding-top: 8px;
+}
+
+.crafting-lightbox-hint {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #a3b8d1;
+  text-align: center;
+}
+
+@media (max-width: 639px) {
+  .crafting-lightbox-hint {
+    display: none;
+  }
+}
+

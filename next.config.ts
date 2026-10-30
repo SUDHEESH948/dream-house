@@ -6,5 +6,9 @@ const config: NextConfig = {
   ...(process.env.NODE_ENV === 'production' ? { output: 'export' as const } : {}),
   trailingSlash: true,
   images: { unoptimized: true },
+  experimental: {
+    cpus: 1,
+    staticGenerationMaxConcurrency: 1,
+  },
 };
 export default config;

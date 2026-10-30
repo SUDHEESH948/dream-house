@@ -5,6 +5,8 @@ import { Action, Arrow, Conversation, Photo } from './StudioSections';
 import { ContactForm } from './ContactForm';
 import { GalleryFilters } from './GalleryFilters';
 import { GalleryCarousel } from './GalleryCarousel';
+import { CraftingLandmarks } from './CraftingLandmarks';
+import { getProjectLandmarkImages } from '../lib/projectImages';
 
 function Intro({title,accent,children}:{title:string;accent:string;children:React.ReactNode}) {
   return <header className="dh-page-intro dh-rail"><h1 data-reveal="up">{title}<br/><em>{accent}</em></h1><div className="dh-page-description" data-reveal="up">{children}</div></header>;
@@ -21,7 +23,8 @@ export function ServicesPage() {
     <Conversation title="Not sure where to start? Bring the question."/></div>;
 }
 export function GalleryPage() {
-  return <div className="dh-inner dh-gallery-page"><Intro title="Collect the details." accent="Find your direction."><p>A photograph can help explain a preference. Explore these spaces as starting points for your own brief.</p></Intro><GalleryCarousel/><section className="dh-section dh-gallery-section"><div className="dh-rail"><p className="dh-gallery-note">Explore our architectural designs, finished spaces and detail inspirations. Use the details you like to begin a conversation about your own space.</p><GalleryFilters initialCount={ideas.length}/><div className="dh-ideas-grid" data-project-grid="">{ideas.map((idea, index)=><article data-category={idea.category} key={idea.slug}><Link href={`/gallery/${idea.slug}/`}><div className="dh-idea-photo"><Image src={`/images/${idea.image}.webp`} alt={idea.focus} fill sizes="(max-width:639px) 100vw, (max-width:1023px) 50vw, 33vw" priority={index < 2}/></div><div className="dh-idea-caption"><span>{idea.category}</span><h2>{idea.title}</h2><p>{idea.focus}</p></div></Link></article>)}</div></div></section><Conversation title="Turn a reference into a conversation."/></div>;
+  const landmarkImages = getProjectLandmarkImages();
+  return <div className="dh-inner dh-gallery-page"><Intro title="Collect the details." accent="Find your direction."><p>A photograph can help explain a preference. Explore these spaces as starting points for your own brief.</p></Intro><GalleryCarousel/><section className="dh-section dh-gallery-section"><div className="dh-rail"><p className="dh-gallery-note">Explore our architectural designs, finished spaces and detail inspirations. Use the details you like to begin a conversation about your own space.</p><GalleryFilters initialCount={ideas.length}/><div className="dh-ideas-grid" data-project-grid="">{ideas.map((idea, index)=><article data-category={idea.category} key={idea.slug}><Link href={`/gallery/${idea.slug}/`}><div className="dh-idea-photo"><Image src={`/images/${idea.image}.webp`} alt={idea.focus} fill sizes="(max-width:639px) 100vw, (max-width:1023px) 50vw, 33vw" priority={index < 2}/></div><div className="dh-idea-caption"><span>{idea.category}</span><h2>{idea.title}</h2><p>{idea.focus}</p></div></Link></article>)}</div></div></section><CraftingLandmarks images={landmarkImages}/><Conversation title="Turn a reference into a conversation."/></div>;
 }
 export function IdeaPage({idea}:{idea:Idea}) {
   const next=ideas[(ideas.findIndex(item=>item.slug===idea.slug)+1)%ideas.length];
